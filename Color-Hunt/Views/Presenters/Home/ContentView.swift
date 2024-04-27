@@ -1,16 +1,9 @@
-//
-//  ContentView.swift
-//  Color-Hunt
-//
-//  Created by Christopher Nathanael Tessy on 23/04/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         NavigationStack() {
-            NavigationLink(destination: PlayerNumberView()) {
+            NavigationLink(destination: PlayView().environmentObject(PlayViewModel()).navigationBarBackButtonHidden()) {
                 Image(systemName: "play.fill")
                     .resizable()
                     .frame(width: 32, height: 32)

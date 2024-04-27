@@ -1,9 +1,10 @@
 import SwiftUI
 
-
 // View representing the camera access
 struct AccessCameraView: UIViewControllerRepresentable {
-    @Binding var selectedImage: UIImage?
+    // Environment object to for view model
+    @EnvironmentObject var playViewModel: PlayViewModel
+    
     @Environment(\.presentationMode) var isPresented
     
     // Function to create the UIImagePickerController
@@ -36,7 +37,9 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     // Function called when image is picked
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else { return }
-        self.picker.selectedImage = selectedImage
+        self.picker.playViewModel.selectedImage = selectedImage
+        self.picker.playViewModel.calculateImageAverageColor()
+        
         self.picker.isPresented.wrappedValue.dismiss()
     }
 }
