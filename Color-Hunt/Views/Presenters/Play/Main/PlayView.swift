@@ -13,9 +13,6 @@ struct PlayView: View {
                 .onDisappear {
                     playViewModel.resetGame()
                 }
-        } else if playViewModel.isSelectingPlayerNumber {
-            // Select player number
-            PlayerNumberView()
         } else if playViewModel.isPlayerTransition {
             // Change player
             PlayerTransitionView()

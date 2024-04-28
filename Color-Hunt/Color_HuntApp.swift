@@ -11,7 +11,8 @@ import SwiftUI
 struct Color_HuntApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(PlayViewModel())
         }
     }
 }

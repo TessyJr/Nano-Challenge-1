@@ -12,7 +12,7 @@ class PlayViewModel: ObservableObject {
     
     // Variables to change views
     @Published var isGameOver: Bool = false
-    @Published var isSelectingPlayerNumber: Bool = true
+    @Published var isSelectingPlayerNumber: Bool = false
     @Published var isPlayerTransition: Bool = false
     
     // State variables to manage image selection and manipulation
@@ -61,7 +61,7 @@ class PlayViewModel: ObservableObject {
         currentPlayer = 1
         
         isGameOver = false
-        isSelectingPlayerNumber = true
+        isSelectingPlayerNumber = false
         isPlayerTransition = false
         
         selectedImage = nil

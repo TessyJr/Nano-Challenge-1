@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53665C462BDE7B5200B7419D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C452BDE7B5200B7419D /* HomeView.swift */; };
 		53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */; };
-		53764ADC2BD7F1C30066E371 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* ContentView.swift */; };
+		53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* StartView.swift */; };
 		53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764ADD2BD7F1C40066E371 /* Assets.xcassets */; };
 		53764AE12BD7F1C40066E371 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764AE02BD7F1C40066E371 /* Preview Assets.xcassets */; };
 		53764AEA2BD7F7450066E371 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AE92BD7F7450066E371 /* PlayView.swift */; };
@@ -23,9 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53665C452BDE7B5200B7419D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		53764AD62BD7F1C30066E371 /* Color-Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color-Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_HuntApp.swift; sourceTree = "<group>"; };
-		53764ADB2BD7F1C30066E371 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		53764ADB2BD7F1C30066E371 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		53764ADD2BD7F1C40066E371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53764AE02BD7F1C40066E371 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		53764AE92BD7F7450066E371 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
@@ -50,6 +52,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53665C412BDE7AFE00B7419D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				53764AE92BD7F7450066E371 /* PlayView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		53665C422BDE7B0500B7419D /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
+				539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */,
+				539A17782BDD125F002A46F2 /* PlayerTurnView.swift */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
+		53665C432BDE7B2800B7419D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				53665C452BDE7B5200B7419D /* HomeView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		53665C442BDE7B3C00B7419D /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				539A17652BDB7A08002A46F2 /* PlayerNumberView.swift */,
+				53764ADB2BD7F1C30066E371 /* StartView.swift */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
 		53764ACD2BD7F1C30066E371 = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +106,9 @@
 		53764AD82BD7F1C30066E371 /* Color-Hunt */ = {
 			isa = PBXGroup;
 			children = (
-				539A17732BDBA28C002A46F2 /* ViewModels */,
 				539A176B2BDB9730002A46F2 /* Models */,
 				539A176E2BDBA064002A46F2 /* Views */,
+				539A17732BDBA28C002A46F2 /* ViewModels */,
 				53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */,
 				53764ADD2BD7F1C40066E371 /* Assets.xcassets */,
 				53764ADF2BD7F1C40066E371 /* Preview Content */,
@@ -99,24 +136,16 @@
 			isa = PBXGroup;
 			children = (
 				539A17722BDBA0E3002A46F2 /* Presenters */,
-				539A176F2BDBA072002A46F2 /* Components */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		539A176F2BDBA072002A46F2 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		539A17722BDBA0E3002A46F2 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				539A177A2BDD1344002A46F2 /* Result */,
-				539A17772BDCB0E9002A46F2 /* Play */,
 				539A17762BDCB0CE002A46F2 /* Home */,
+				539A17772BDCB0E9002A46F2 /* Play */,
+				539A177A2BDD1344002A46F2 /* Result */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -132,7 +161,8 @@
 		539A17762BDCB0CE002A46F2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				53764ADB2BD7F1C30066E371 /* ContentView.swift */,
+				53665C432BDE7B2800B7419D /* Main */,
+				53665C442BDE7B3C00B7419D /* Sub */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -140,11 +170,8 @@
 		539A17772BDCB0E9002A46F2 /* Play */ = {
 			isa = PBXGroup;
 			children = (
-				539A17652BDB7A08002A46F2 /* PlayerNumberView.swift */,
-				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
-				53764AE92BD7F7450066E371 /* PlayView.swift */,
-				539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */,
-				539A17782BDD125F002A46F2 /* PlayerTurnView.swift */,
+				53665C412BDE7AFE00B7419D /* Main */,
+				53665C422BDE7B0500B7419D /* Sub */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -236,8 +263,9 @@
 				539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */,
 				539A17712BDBA088002A46F2 /* AccessCameraView.swift in Sources */,
 				53764AEA2BD7F7450066E371 /* PlayView.swift in Sources */,
-				53764ADC2BD7F1C30066E371 /* ContentView.swift in Sources */,
+				53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */,
 				539A17662BDB7A08002A46F2 /* PlayerNumberView.swift in Sources */,
+				53665C462BDE7B5200B7419D /* HomeView.swift in Sources */,
 				53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */,
 				539A176D2BDB9744002A46F2 /* Result.swift in Sources */,
 				539A177C2BDD1353002A46F2 /* ResultView.swift in Sources */,

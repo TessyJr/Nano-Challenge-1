@@ -1,0 +1,124 @@
+import SwiftUI
+
+struct PlayerTransitionView: View {
+    // Environment object for view model
+    @EnvironmentObject var playViewModel: PlayViewModel
+    
+    var body: some View {
+        ZStack {
+            backgroundImageView(for: playViewModel.currentPlayer)
+            
+            VStack {
+                transitionImageView(for: playViewModel.currentPlayer)
+                transitionButtonView(for: playViewModel.currentPlayer)
+            }
+        }
+    }
+    
+    private func backgroundImageView(for currentPlayer: Int) -> some View {
+        switch currentPlayer {
+        case 1:
+            return Image("backgroundTeal")
+        case 2:
+            return Image("backgroundOrange")
+        case 3:
+            return Image("backgroundPink")
+        case 4:
+            return Image("backgroundPurple")
+        default:
+            return Image("backgroundTeal")
+        }
+    }
+    
+    private func transitionImageView(for currentPlayer: Int) -> some View {
+        switch currentPlayer {
+        case 1:
+            return Image("transitionPlayer1")
+        case 2:
+            return Image("transitionPlayer2")
+        case 3:
+            return Image("transitionPlayer3")
+        case 4:
+            return Image("transitionPlayer4")
+        default:
+            return Image("backgroundPlayer1")
+        }
+    }
+    
+    private func transitionButtonView(for currentPlayer: Int) -> some View {
+        switch currentPlayer {
+        case 1:
+            return Button(action: {
+                playViewModel.isPlayerTransition = false
+            }) {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .padding(.horizontal, 128)
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color.customTeal)
+                    .background(Color.white)
+                    .cornerRadius(16)
+            }
+        case 2:
+            return Button(action: {
+                playViewModel.isPlayerTransition = false
+            }) {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .padding(.horizontal, 128)
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color.customOrange)
+                    .background(Color.white)
+                    .cornerRadius(16)
+            }
+        case 3:
+            return Button(action: {
+                playViewModel.isPlayerTransition = false
+            }) {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .padding(.horizontal, 128)
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color.customPink)
+                    .background(Color.white)
+                    .cornerRadius(16)
+            }
+        case 4:
+            return Button(action: {
+                playViewModel.isPlayerTransition = false
+            }) {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .padding(.horizontal, 128)
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color.customPurple)
+                    .background(Color.white)
+                    .cornerRadius(16)
+            }
+        default:
+            return Button(action: {
+                playViewModel.isPlayerTransition = false
+            }) {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .padding(.horizontal, 128)
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color.customTeal)
+                    .background(Color.white)
+                    .cornerRadius(16)
+            }
+        }
+    }
+}
+
+struct PlayerTransitionView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerTransitionView()
+            .environmentObject(PlayViewModel()) // Assuming PlayViewModel is your view model
+    }
+}
