@@ -9,9 +9,10 @@ struct Result: Identifiable {
     var image: UIImage
     var targetColor: Color
     var averageColor: Color
-    var deltaE: UIColor.ColorDifferenceResult
+//    var deltaE: UIColor.ColorDifferenceResult
+    var deltaE: CGFloat
     
-    init(playerName: String, image: UIImage, targetColor: Color, averageColor: Color, deltaE: UIColor.ColorDifferenceResult) {
+    init(playerName: String, image: UIImage, targetColor: Color, averageColor: Color, deltaE: CGFloat) {
         self.id = UUID()
         self.playerName = playerName
         self.image = image

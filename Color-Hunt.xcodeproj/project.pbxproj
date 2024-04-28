@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53665C462BDE7B5200B7419D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C452BDE7B5200B7419D /* HomeView.swift */; };
+		53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C482BDE983C00B7419D /* ResultOneView.swift */; };
 		53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */; };
 		53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* StartView.swift */; };
 		53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764ADD2BD7F1C40066E371 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		53665C452BDE7B5200B7419D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		53665C482BDE983C00B7419D /* ResultOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOneView.swift; sourceTree = "<group>"; };
 		53764AD62BD7F1C30066E371 /* Color-Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color-Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_HuntApp.swift; sourceTree = "<group>"; };
 		53764ADB2BD7F1C30066E371 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -63,9 +65,11 @@
 		53665C422BDE7B0500B7419D /* Sub */ = {
 			isa = PBXGroup;
 			children = (
-				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
 				539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */,
 				539A17782BDD125F002A46F2 /* PlayerTurnView.swift */,
+				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
+				539A177B2BDD1353002A46F2 /* ResultView.swift */,
+				53665C482BDE983C00B7419D /* ResultOneView.swift */,
 			);
 			path = Sub;
 			sourceTree = "<group>";
@@ -145,7 +149,6 @@
 			children = (
 				539A17762BDCB0CE002A46F2 /* Home */,
 				539A17772BDCB0E9002A46F2 /* Play */,
-				539A177A2BDD1344002A46F2 /* Result */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -174,14 +177,6 @@
 				53665C422BDE7B0500B7419D /* Sub */,
 			);
 			path = Play;
-			sourceTree = "<group>";
-		};
-		539A177A2BDD1344002A46F2 /* Result */ = {
-			isa = PBXGroup;
-			children = (
-				539A177B2BDD1353002A46F2 /* ResultView.swift */,
-			);
-			path = Result;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +257,7 @@
 			files = (
 				539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */,
 				539A17712BDBA088002A46F2 /* AccessCameraView.swift in Sources */,
+				53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */,
 				53764AEA2BD7F7450066E371 /* PlayView.swift in Sources */,
 				53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */,
 				539A17662BDB7A08002A46F2 /* PlayerNumberView.swift in Sources */,

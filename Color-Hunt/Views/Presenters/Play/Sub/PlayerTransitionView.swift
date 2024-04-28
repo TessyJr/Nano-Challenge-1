@@ -19,14 +19,29 @@ struct PlayerTransitionView: View {
         switch currentPlayer {
         case 1:
             return Image("backgroundTeal")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         case 2:
             return Image("backgroundOrange")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         case 3:
             return Image("backgroundPink")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         case 4:
             return Image("backgroundPurple")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         default:
             return Image("backgroundTeal")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         }
     }
     
