@@ -15,6 +15,7 @@
 		53665C532BDF9CEA00B7419D /* ResultFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C522BDF9CEA00B7419D /* ResultFourView.swift */; };
 		53665C552BDF9F7900B7419D /* backgroundMusic.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */; };
 		53665C572BDFA16600B7419D /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C562BDFA16600B7419D /* AudioManager.swift */; };
+		53665C592BDFE53900B7419D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C582BDFE53900B7419D /* SwiftUIView.swift */; };
 		53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */; };
 		53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* StartView.swift */; };
 		53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764ADD2BD7F1C40066E371 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		53665C522BDF9CEA00B7419D /* ResultFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFourView.swift; sourceTree = "<group>"; };
 		53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.mp4; sourceTree = "<group>"; };
 		53665C562BDFA16600B7419D /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		53665C582BDFE53900B7419D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		53764AD62BD7F1C30066E371 /* Color-Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color-Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_HuntApp.swift; sourceTree = "<group>"; };
 		53764ADB2BD7F1C30066E371 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				53665C452BDE7B5200B7419D /* HomeView.swift */,
+				53665C582BDFE53900B7419D /* SwiftUIView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				53665C512BDF930900B7419D /* ResultThreeView.swift in Sources */,
 				539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */,
+				53665C592BDFE53900B7419D /* SwiftUIView.swift in Sources */,
 				539A17712BDBA088002A46F2 /* AccessCameraView.swift in Sources */,
 				53665C572BDFA16600B7419D /* AudioManager.swift in Sources */,
 				53665C4E2BDF725E00B7419D /* ResultTwoView.swift in Sources */,

@@ -5,20 +5,24 @@ struct ResultFourView: View {
     @EnvironmentObject var playViewModel: PlayViewModel
     
     @State var winner = 0
+    @State var opacityP1 = 1.0
+    @State var opacityP2 = 1.0
+    @State var opacityP3 = 1.0
+    @State var opacityP4 = 1.0
     
     var body: some View {
         Grid(horizontalSpacing: 6, verticalSpacing: 6) {
             GridRow {
                 ZStack {
-                    if winner == 0 {
-                        Image("backgroundTeal")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }else {
-                        Image(winner == 1 ? "backgroundTeal" : "backgroundBlack")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }
+                    Image("backgroundBlack")
+                        .resizable()
+                        .ignoresSafeArea()
+                    
+                    Image("backgroundTeal")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .opacity(opacityP1)
+                        .animation(.easeIn(duration: 0.2), value: opacityP1)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -61,15 +65,15 @@ struct ResultFourView: View {
                 }
                 
                 ZStack {
-                    if winner == 0 {
-                        Image("backgroundOrange")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }else {
-                        Image(winner == 2 ? "backgroundOrange" : "backgroundBlack")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }
+                    Image("backgroundBlack")
+                        .resizable()
+                        .ignoresSafeArea()
+                    
+                    Image("backgroundOrange")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .opacity(opacityP2)
+                        .animation(.easeIn(duration: 0.2), value: opacityP2)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -114,15 +118,15 @@ struct ResultFourView: View {
             
             GridRow {
                 ZStack {
-                    if winner == 0 {
-                        Image("backgroundPink")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }else {
-                        Image(winner == 3 ? "backgroundPink" : "backgroundBlack")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }
+                    Image("backgroundBlack")
+                        .resizable()
+                        .ignoresSafeArea()
+                    
+                    Image("backgroundPink")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .opacity(opacityP3)
+                        .animation(.easeIn(duration: 0.2), value: opacityP3)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -165,15 +169,15 @@ struct ResultFourView: View {
                 }
                 
                 ZStack {
-                    if winner == 0 {
-                        Image("backgroundPurple")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }else {
-                        Image(winner == 4 ? "backgroundPurple" : "backgroundBlack")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }
+                    Image("backgroundBlack")
+                        .resizable()
+                        .ignoresSafeArea()
+                    
+                    Image("backgroundPurple")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .opacity(opacityP4)
+                        .animation(.easeIn(duration: 0.2), value: opacityP4)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -220,6 +224,31 @@ struct ResultFourView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 playViewModel.calculateWinner()
                 winner = playViewModel.winner!.playerNumber
+                
+                switch winner {
+                case 1:
+                    opacityP2 = 0
+                    opacityP3 = 0
+                    opacityP4 = 0
+                case 2:
+                    opacityP1 = 0
+                    opacityP3 = 0
+                    opacityP4 = 0
+                case 3:
+                    opacityP1 = 0
+                    opacityP2 = 0
+                    opacityP4 = 0
+                case 4:
+                    opacityP1 = 0
+                    opacityP2 = 0
+                    opacityP3 = 0
+                default:
+                    opacityP1 = 0
+                    opacityP2 = 0
+                    opacityP3 = 0
+                    opacityP4 = 0
+                }
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     playViewModel.isShowingWinner = true
                 }

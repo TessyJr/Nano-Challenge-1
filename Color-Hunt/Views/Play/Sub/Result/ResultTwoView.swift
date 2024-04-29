@@ -5,20 +5,22 @@ struct ResultTwoView: View {
     @EnvironmentObject var playViewModel: PlayViewModel
     
     @State var winner = 0
+    @State var opacityP1 = 1.0
+    @State var opacityP2 = 1.0
     
     var body: some View {
         Grid(horizontalSpacing: 8, verticalSpacing: 8) {
             GridRow {
                 ZStack {
-                    if winner == 0 {
-                        Image("backgroundTeal")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }else {
-                        Image(winner == 1 ? "backgroundTeal" : "backgroundBlack")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }
+                    Image("backgroundBlack")
+                        .resizable()
+                        .ignoresSafeArea()
+                    
+                    Image("backgroundTeal")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .opacity(opacityP1)
+                        .animation(.easeIn(duration: 0.2), value: opacityP1)
                     
                     VStack(spacing: 12) {
                         HStack {
@@ -63,15 +65,15 @@ struct ResultTwoView: View {
             
             GridRow {
                 ZStack {
-                    if winner == 0 {
-                        Image("backgroundOrange")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }else {
-                        Image(winner == 2 ? "backgroundOrange" : "backgroundBlack")
-                            .resizable()
-                            .ignoresSafeArea()
-                    }
+                    Image("backgroundBlack")
+                        .resizable()
+                        .ignoresSafeArea()
+                    
+                    Image("backgroundOrange")
+                        .resizable()
+                        .ignoresSafeArea()
+                        .opacity(opacityP2)
+                        .animation(.easeIn(duration: 0.25), value: opacityP2)
                     
                     VStack(spacing: 12) {
                         HStack {
@@ -118,6 +120,17 @@ struct ResultTwoView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 playViewModel.calculateWinner()
                 winner = playViewModel.winner!.playerNumber
+                
+                switch winner {
+                case 1:
+                    opacityP2 = 0
+                case 2:
+                    opacityP1 = 0
+                default:
+                    opacityP1 = 0
+                    opacityP2 = 0
+                }
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     playViewModel.isShowingWinner = true
                 }
