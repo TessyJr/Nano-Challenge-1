@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import ColorKit
+import AVFoundation
 
 class PlayViewModel: ObservableObject {
     // Variable to store the result
@@ -90,7 +91,6 @@ class PlayViewModel: ObservableObject {
     
     func calculateWinner() -> Void {
         winner = results.max(by: { $0.score < $1.score })
-        isShowingWinner = true
         return
     }
     

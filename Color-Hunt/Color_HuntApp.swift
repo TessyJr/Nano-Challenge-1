@@ -9,10 +9,15 @@ import SwiftUI
 
 @main
 struct Color_HuntApp: App {
+    var audioPlayer = AudioManager()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .environmentObject(PlayViewModel())
+                .onAppear() {
+                    audioPlayer.playBgMusic()
+                }
         }
     }
 }

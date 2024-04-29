@@ -20,6 +20,12 @@ struct PlayView: View {
                 switch playViewModel.playerNumber {
                 case 1:
                     ResultOneView()
+                case 2:
+                    ResultTwoView()
+                case 3:
+                    ResultThreeView()
+                case 4:
+                    ResultFourView()
                 default:
                     ResultView()
                 }

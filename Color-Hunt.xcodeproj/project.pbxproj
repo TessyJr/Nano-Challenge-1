@@ -10,6 +10,11 @@
 		53665C462BDE7B5200B7419D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C452BDE7B5200B7419D /* HomeView.swift */; };
 		53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C482BDE983C00B7419D /* ResultOneView.swift */; };
 		53665C4B2BDF24F400B7419D /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C4A2BDF24F400B7419D /* WinnerView.swift */; };
+		53665C4E2BDF725E00B7419D /* ResultTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C4D2BDF725E00B7419D /* ResultTwoView.swift */; };
+		53665C512BDF930900B7419D /* ResultThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C502BDF930900B7419D /* ResultThreeView.swift */; };
+		53665C532BDF9CEA00B7419D /* ResultFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C522BDF9CEA00B7419D /* ResultFourView.swift */; };
+		53665C552BDF9F7900B7419D /* backgroundMusic.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */; };
+		53665C572BDFA16600B7419D /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C562BDFA16600B7419D /* AudioManager.swift */; };
 		53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */; };
 		53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* StartView.swift */; };
 		53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764ADD2BD7F1C40066E371 /* Assets.xcassets */; };
@@ -29,6 +34,12 @@
 		53665C452BDE7B5200B7419D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		53665C482BDE983C00B7419D /* ResultOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOneView.swift; sourceTree = "<group>"; };
 		53665C4A2BDF24F400B7419D /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
+		53665C4D2BDF725E00B7419D /* ResultTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTwoView.swift; sourceTree = "<group>"; };
+		53665C4F2BDF907800B7419D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		53665C502BDF930900B7419D /* ResultThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultThreeView.swift; sourceTree = "<group>"; };
+		53665C522BDF9CEA00B7419D /* ResultFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFourView.swift; sourceTree = "<group>"; };
+		53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.mp4; sourceTree = "<group>"; };
+		53665C562BDFA16600B7419D /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		53764AD62BD7F1C30066E371 /* Color-Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color-Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_HuntApp.swift; sourceTree = "<group>"; };
 		53764ADB2BD7F1C30066E371 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -67,11 +78,10 @@
 		53665C422BDE7B0500B7419D /* Sub */ = {
 			isa = PBXGroup;
 			children = (
+				53665C4C2BDF71A300B7419D /* Result */,
 				539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */,
 				539A17782BDD125F002A46F2 /* PlayerTurnView.swift */,
 				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
-				539A177B2BDD1353002A46F2 /* ResultView.swift */,
-				53665C482BDE983C00B7419D /* ResultOneView.swift */,
 				53665C4A2BDF24F400B7419D /* WinnerView.swift */,
 			);
 			path = Sub;
@@ -94,6 +104,18 @@
 			path = Sub;
 			sourceTree = "<group>";
 		};
+		53665C4C2BDF71A300B7419D /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				539A177B2BDD1353002A46F2 /* ResultView.swift */,
+				53665C482BDE983C00B7419D /* ResultOneView.swift */,
+				53665C4D2BDF725E00B7419D /* ResultTwoView.swift */,
+				53665C502BDF930900B7419D /* ResultThreeView.swift */,
+				53665C522BDF9CEA00B7419D /* ResultFourView.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
 		53764ACD2BD7F1C30066E371 = {
 			isa = PBXGroup;
 			children = (
@@ -113,12 +135,15 @@
 		53764AD82BD7F1C30066E371 /* Color-Hunt */ = {
 			isa = PBXGroup;
 			children = (
+				53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */,
+				53665C4F2BDF907800B7419D /* Info.plist */,
+				53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */,
 				539A176B2BDB9730002A46F2 /* Models */,
 				539A176E2BDBA064002A46F2 /* Views */,
 				539A17732BDBA28C002A46F2 /* ViewModels */,
-				53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */,
 				53764ADD2BD7F1C40066E371 /* Assets.xcassets */,
 				53764ADF2BD7F1C40066E371 /* Preview Content */,
+				53665C562BDFA16600B7419D /* AudioManager.swift */,
 			);
 			path = "Color-Hunt";
 			sourceTree = "<group>";
@@ -239,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53764AE12BD7F1C40066E371 /* Preview Assets.xcassets in Resources */,
+				53665C552BDF9F7900B7419D /* backgroundMusic.mp4 in Resources */,
 				53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,9 +276,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53665C512BDF930900B7419D /* ResultThreeView.swift in Sources */,
 				539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */,
 				539A17712BDBA088002A46F2 /* AccessCameraView.swift in Sources */,
+				53665C572BDFA16600B7419D /* AudioManager.swift in Sources */,
+				53665C4E2BDF725E00B7419D /* ResultTwoView.swift in Sources */,
 				53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */,
+				53665C532BDF9CEA00B7419D /* ResultFourView.swift in Sources */,
 				53764AEA2BD7F7450066E371 /* PlayView.swift in Sources */,
 				53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */,
 				539A17662BDB7A08002A46F2 /* PlayerNumberView.swift in Sources */,
@@ -399,6 +429,7 @@
 				DEVELOPMENT_TEAM = XJ7Y6VR3NN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Color-Hunt/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -406,6 +437,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -430,6 +462,7 @@
 				DEVELOPMENT_TEAM = XJ7Y6VR3NN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Color-Hunt/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -437,6 +470,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
