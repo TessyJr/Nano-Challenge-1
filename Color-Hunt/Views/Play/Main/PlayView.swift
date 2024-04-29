@@ -27,7 +27,7 @@ struct PlayView: View {
                 case 4:
                     ResultFourView()
                 default:
-                    ResultView()
+                    EmptyView()
                 }
             }
         } else if playViewModel.isPlayerTransition {
