@@ -4,9 +4,6 @@ struct ResultOneView: View {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
-    // Environment variable to manage presentation mode
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         ZStack {
             Image("backgroundTeal")
@@ -46,16 +43,16 @@ struct ResultOneView: View {
                         
                     }
                     
-                    Text(String(format: "%.2f", playViewModel.results[0].deltaE))
+                    Text(String(format: "%.2f%%", playViewModel.results[0].score))
                         .foregroundColor(Color.white)
                         .font(.system(size: 64))
                         .fontWeight(.black)
                 }
                 
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                    playViewModel.calculateWinner()
                 }) {
-                    Image(systemName: "house.circle.fill")
+                    Image(systemName: "arrowshape.right.fill")
                         .resizable()
                         .frame(width: 48, height: 48)
                         .padding(.horizontal, 128)

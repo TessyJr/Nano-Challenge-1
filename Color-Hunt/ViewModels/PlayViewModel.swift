@@ -5,6 +5,7 @@ import ColorKit
 class PlayViewModel: ObservableObject {
     // Variable to store the result
     @Published var results: [Result] = []
+    @Published var winner: Result?
     
     // Variables to show current player and number of players
     @Published var playerNumber: Int = 0
@@ -14,6 +15,7 @@ class PlayViewModel: ObservableObject {
     @Published var isGameOver: Bool = false
     @Published var isSelectingPlayerNumber: Bool = false
     @Published var isPlayerTransition: Bool = false
+    @Published var isShowingWinner: Bool = false
     
     // State variables to manage image selection and manipulation
     @Published var showCamera = false
@@ -26,7 +28,7 @@ class PlayViewModel: ObservableObject {
     @Published var deltaE: CGFloat = 0
     
     func saveImage() {
-        results.append(Result(playerName: "Player \(currentPlayer)", image: selectedImage!, targetColor: Color(uiColor: uicTargetColor), averageColor: Color(uiColor: uicAverageColor), deltaE: deltaE))
+        results.append(Result(playerNumber: currentPlayer, image: selectedImage!, targetColor: Color(uiColor: uicTargetColor), averageColor: Color(uiColor: uicAverageColor), deltaE: deltaE))
         
         if currentPlayer == playerNumber {
             isGameOver = true
@@ -79,7 +81,6 @@ class PlayViewModel: ObservableObject {
                 uicAverageColor = try selectedImage!.averageColor()
                 
                 // Calculate delta of average color to target color
-                
                 deltaE = calcDeltaECIE94(lhs: uicAverageColor, rhs: uicTargetColor)
             } catch {
                 print("Error while getting average color: \(error)")
@@ -87,8 +88,15 @@ class PlayViewModel: ObservableObject {
         }
     }
     
+    func calculateWinner() -> Void {
+        winner = results.max(by: { $0.score < $1.score })
+        isShowingWinner = true
+        return
+    }
+    
     func resetGame() {
         results = []
+        winner = nil
         
         playerNumber = 0
         currentPlayer = 1
@@ -96,7 +104,9 @@ class PlayViewModel: ObservableObject {
         isGameOver = false
         isSelectingPlayerNumber = false
         isPlayerTransition = false
+        isShowingWinner = false
         
+        showCamera = false
         selectedImage = nil
         image = nil
         

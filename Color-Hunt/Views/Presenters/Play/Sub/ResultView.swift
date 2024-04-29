@@ -4,16 +4,13 @@ struct ResultView: View {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
-    // Environment variable to manage presentation mode
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         VStack {
             ScrollView {
                 ForEach(playViewModel.results) { result in
                     VStack {
                         HStack {
-                            Text("\(result.playerName)")
+                            Text("Player \(result.playerNumber)")
                                 .font(.title2)
                                 .fontWeight(.bold)
                             
@@ -47,7 +44,7 @@ struct ResultView: View {
                             Spacer()
                         }
                         
-                        Text("\(result.deltaE)")
+                        Text("\(result.score)")
                         
                         Image(uiImage: result.image)
                             .resizable()
@@ -65,17 +62,17 @@ struct ResultView: View {
             Spacer()
             
             Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
+                playViewModel.calculateWinner()
             }) {
-                Image(systemName: "house.fill")
+                Image(systemName: "arrowshape.right.fill")
                     .resizable()
-                    .scaledToFit()
+                    .frame(width: 48, height: 48)
+                    .padding(.horizontal, 128)
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color.customTeal)
+                    .background(Color.white)
+                    .cornerRadius(16)
             }
-            .frame(width: 256, height: 32)
-            .padding(24)
-            .background(Color.blue)
-            .foregroundColor(Color.white)
-            .cornerRadius(16)
         }
         .padding()
     }

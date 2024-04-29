@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		53665C462BDE7B5200B7419D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C452BDE7B5200B7419D /* HomeView.swift */; };
 		53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C482BDE983C00B7419D /* ResultOneView.swift */; };
+		53665C4B2BDF24F400B7419D /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C4A2BDF24F400B7419D /* WinnerView.swift */; };
 		53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */; };
 		53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* StartView.swift */; };
 		53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764ADD2BD7F1C40066E371 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		53665C452BDE7B5200B7419D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		53665C482BDE983C00B7419D /* ResultOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOneView.swift; sourceTree = "<group>"; };
+		53665C4A2BDF24F400B7419D /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
 		53764AD62BD7F1C30066E371 /* Color-Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color-Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_HuntApp.swift; sourceTree = "<group>"; };
 		53764ADB2BD7F1C30066E371 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
 				539A177B2BDD1353002A46F2 /* ResultView.swift */,
 				53665C482BDE983C00B7419D /* ResultOneView.swift */,
+				53665C4A2BDF24F400B7419D /* WinnerView.swift */,
 			);
 			path = Sub;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				539A176D2BDB9744002A46F2 /* Result.swift in Sources */,
 				539A177C2BDD1353002A46F2 /* ResultView.swift in Sources */,
 				539A17792BDD125F002A46F2 /* PlayerTurnView.swift in Sources */,
+				53665C4B2BDF24F400B7419D /* WinnerView.swift in Sources */,
 				539A17682BDB8F21002A46F2 /* PlayerTransitionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

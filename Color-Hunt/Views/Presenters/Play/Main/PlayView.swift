@@ -9,14 +9,20 @@ struct PlayView: View {
     var body: some View {
         if playViewModel.isGameOver {
             // Game Over
-            switch playViewModel.playerNumber {
-            case 1:
-                ResultOneView()
+            if playViewModel.isShowingWinner {
+                // Show winner
+                WinnerView()
                     .onDisappear {
                         playViewModel.resetGame()
                     }
-            default:
-                ResultView()
+            } else {
+                // Show score results
+                switch playViewModel.playerNumber {
+                case 1:
+                    ResultOneView()
+                default:
+                    ResultView()
+                }
             }
         } else if playViewModel.isPlayerTransition {
             // Change player
