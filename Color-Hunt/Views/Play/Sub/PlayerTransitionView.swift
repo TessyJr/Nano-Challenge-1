@@ -48,15 +48,15 @@ struct PlayerTransitionView: View {
     private func transitionImageView(for currentPlayer: Int) -> some View {
         switch currentPlayer {
         case 1:
-            return Image("transitionPlayer1")
+            return Image("cardPlayer1")
         case 2:
-            return Image("transitionPlayer2")
+            return Image("cardPlayer2")
         case 3:
-            return Image("transitionPlayer3")
+            return Image("cardPlayer3")
         case 4:
-            return Image("transitionPlayer4")
+            return Image("cardPlayer4")
         default:
-            return Image("backgroundPlayer1")
+            return Image("cardPlayer1")
         }
     }
     

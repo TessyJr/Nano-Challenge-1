@@ -142,18 +142,10 @@
 		539A176E2BDBA064002A46F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				539A17722BDBA0E3002A46F2 /* Presenters */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		539A17722BDBA0E3002A46F2 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
 				539A17762BDCB0CE002A46F2 /* Home */,
 				539A17772BDCB0E9002A46F2 /* Play */,
 			);
-			path = Presenters;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		539A17732BDBA28C002A46F2 /* ViewModels */ = {

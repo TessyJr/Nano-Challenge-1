@@ -12,8 +12,11 @@ struct WinnerView: View {
             backgroundImageView(for: playViewModel.winner!)
             
             VStack {
-                transitionImageView(for: playViewModel.winner!)
-                    .offset(x: -18)
+                ZStack {
+                    transitionImageView(for: playViewModel.winner!)
+                    Image("crown")
+                        .offset(x: -132, y: -220)
+                }
                 transitionButtonView(for: playViewModel.winner!)
             }
         }
@@ -52,15 +55,15 @@ struct WinnerView: View {
     private func transitionImageView(for winner: Result) -> some View {
         switch winner.playerNumber {
         case 1:
-            return Image("winnerPlayer1")
+            return Image("cardPlayer1")
         case 2:
-            return Image("winnerPlayer2")
+            return Image("cardPlayer2")
         case 3:
-            return Image("winnerPlayer3")
+            return Image("cardPlayer3")
         case 4:
-            return Image("winnerPlayer4")
+            return Image("cardPlayer4")
         default:
-            return Image("winnerPlayer1")
+            return Image("cardPlayer1")
         }
     }
     
