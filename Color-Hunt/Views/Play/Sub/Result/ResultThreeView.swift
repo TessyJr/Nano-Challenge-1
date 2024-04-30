@@ -45,7 +45,7 @@ struct ResultThreeView: View {
                         .cornerRadius(16)
                         
                         ZStack {
-                            Image("resultPlayer1")
+                            Image("targetPlayer1")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 152)
@@ -96,7 +96,7 @@ struct ResultThreeView: View {
                         .cornerRadius(16)
                         
                         ZStack {
-                            Image("resultPlayer2")
+                            Image("targetPlayer2")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 152)
@@ -149,7 +149,7 @@ struct ResultThreeView: View {
                         .cornerRadius(16)
                         
                         ZStack {
-                            Image("resultPlayer3")
+                            Image("targetPlayer3")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 152)

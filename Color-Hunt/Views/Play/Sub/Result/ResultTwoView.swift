@@ -24,35 +24,54 @@ struct ResultTwoView: View {
                     
                     VStack(spacing: 12) {
                         HStack {
-                            Image(uiImage: playViewModel.results[0].image)
-                                .resizable()
-                                .frame(width: 64, height: 64)
-                                .scaledToFit()
-                                .cornerRadius(12)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .fill(Color.black)
+                                    .frame(width: 70, height: 70)
+                                
+                                Image(uiImage: playViewModel.results[0].image)
+                                    .resizable()
+                                    .frame(width: 64, height: 64)
+                                    .scaledToFit()
+                                    .cornerRadius(12)
+                            }
+                            
                             
                             Image(systemName: "arrowshape.right.fill")
                                 .resizable()
                                 .frame(width: 36, height: 36)
                                 .foregroundColor(Color.customTeal)
                             
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(playViewModel.results[0].averageColor)
-                                .frame(width: 64, height: 64)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .fill(Color.black)
+                                    .frame(width: 70, height: 70)
+                                
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(playViewModel.results[0].averageColor)
+                                    .frame(width: 64, height: 64)
+                            }
                         }
-                        .padding()
+                        .padding(13)
                         .background(Color.white)
                         .cornerRadius(20)
                         
                         ZStack {
-                            Image("resultPlayer1")
+                            Image("targetPlayer1")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 212)
                             
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(playViewModel.results[0].targetColor)
-                                .frame(width: 48, height: 48)
-                                .offset(x: 52, y: -35)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black)
+                                    .frame(width: 46, height: 46)
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(playViewModel.results[0].targetColor)
+                                    .frame(width: 40, height: 40)
+                            }
+                            .offset(x: 52.5, y: -35.5)
                         }
                         
                         Text(String(format: "%.2f%%", playViewModel.results[0].score))
@@ -77,35 +96,54 @@ struct ResultTwoView: View {
                     
                     VStack(spacing: 12) {
                         HStack {
-                            Image(uiImage: playViewModel.results[1].image)
-                                .resizable()
-                                .frame(width: 64, height: 64)
-                                .scaledToFit()
-                                .cornerRadius(12)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .fill(Color.black)
+                                    .frame(width: 70, height: 70)
+                                
+                                Image(uiImage: playViewModel.results[1].image)
+                                    .resizable()
+                                    .frame(width: 64, height: 64)
+                                    .scaledToFit()
+                                    .cornerRadius(12)
+                            }
+                            
                             
                             Image(systemName: "arrowshape.right.fill")
                                 .resizable()
                                 .frame(width: 36, height: 36)
                                 .foregroundColor(Color.customOrange)
                             
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(playViewModel.results[1].averageColor)
-                                .frame(width: 64, height: 64)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .fill(Color.black)
+                                    .frame(width: 70, height: 70)
+                                
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(playViewModel.results[1].averageColor)
+                                    .frame(width: 64, height: 64)
+                            }
                         }
-                        .padding()
+                        .padding(13)
                         .background(Color.white)
                         .cornerRadius(20)
                         
                         ZStack {
-                            Image("resultPlayer2")
+                            Image("targetPlayer2")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 212)
                             
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(playViewModel.results[1].targetColor)
-                                .frame(width: 48, height: 48)
-                                .offset(x: 51, y: -35)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black)
+                                    .frame(width: 46, height: 46)
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(playViewModel.results[1].targetColor)
+                                    .frame(width: 40, height: 40)
+                            }
+                            .offset(x: 52.5, y: -35.5)
                         }
                         
                         Text(String(format: "%.2f%%", playViewModel.results[1].score))

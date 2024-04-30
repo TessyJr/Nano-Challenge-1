@@ -15,6 +15,7 @@
 		53665C532BDF9CEA00B7419D /* ResultFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C522BDF9CEA00B7419D /* ResultFourView.swift */; };
 		53665C552BDF9F7900B7419D /* backgroundMusic.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */; };
 		53665C572BDFA16600B7419D /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C562BDFA16600B7419D /* AudioManager.swift */; };
+		53665C5D2BDFF3A700B7419D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C5C2BDFF3A700B7419D /* CameraView.swift */; };
 		53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */; };
 		53764ADC2BD7F1C30066E371 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53764ADB2BD7F1C30066E371 /* StartView.swift */; };
 		53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53764ADD2BD7F1C40066E371 /* Assets.xcassets */; };
@@ -24,7 +25,6 @@
 		539A17662BDB7A08002A46F2 /* PlayerNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17652BDB7A08002A46F2 /* PlayerNumberView.swift */; };
 		539A17682BDB8F21002A46F2 /* PlayerTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */; };
 		539A176D2BDB9744002A46F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A176C2BDB9744002A46F2 /* Result.swift */; };
-		539A17712BDBA088002A46F2 /* AccessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17702BDBA088002A46F2 /* AccessCameraView.swift */; };
 		539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17742BDBA2A4002A46F2 /* PlayViewModel.swift */; };
 		539A17792BDD125F002A46F2 /* PlayerTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17782BDD125F002A46F2 /* PlayerTurnView.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +39,7 @@
 		53665C522BDF9CEA00B7419D /* ResultFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultFourView.swift; sourceTree = "<group>"; };
 		53665C542BDF9F7900B7419D /* backgroundMusic.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.mp4; sourceTree = "<group>"; };
 		53665C562BDFA16600B7419D /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		53665C5C2BDFF3A700B7419D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		53764AD62BD7F1C30066E371 /* Color-Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color-Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_HuntApp.swift; sourceTree = "<group>"; };
 		53764ADB2BD7F1C30066E371 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		539A17652BDB7A08002A46F2 /* PlayerNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNumberView.swift; sourceTree = "<group>"; };
 		539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTransitionView.swift; sourceTree = "<group>"; };
 		539A176C2BDB9744002A46F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		539A17702BDBA088002A46F2 /* AccessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCameraView.swift; sourceTree = "<group>"; };
 		539A17742BDBA2A4002A46F2 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		539A17782BDD125F002A46F2 /* PlayerTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTurnView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,8 +79,8 @@
 				53665C4C2BDF71A300B7419D /* Result */,
 				539A17672BDB8F21002A46F2 /* PlayerTransitionView.swift */,
 				539A17782BDD125F002A46F2 /* PlayerTurnView.swift */,
-				539A17702BDBA088002A46F2 /* AccessCameraView.swift */,
 				53665C4A2BDF24F400B7419D /* WinnerView.swift */,
+				53665C5C2BDFF3A700B7419D /* CameraView.swift */,
 			);
 			path = Sub;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			files = (
 				53665C512BDF930900B7419D /* ResultThreeView.swift in Sources */,
 				539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */,
-				539A17712BDBA088002A46F2 /* AccessCameraView.swift in Sources */,
+				53665C5D2BDFF3A700B7419D /* CameraView.swift in Sources */,
 				53665C572BDFA16600B7419D /* AudioManager.swift in Sources */,
 				53665C4E2BDF725E00B7419D /* ResultTwoView.swift in Sources */,
 				53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */,
@@ -427,6 +427,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Color-Hunt/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -460,6 +463,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Color-Hunt/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

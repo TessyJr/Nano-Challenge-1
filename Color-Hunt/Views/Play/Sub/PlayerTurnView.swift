@@ -4,90 +4,129 @@ struct PlayerTurnView: View {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
+    @StateObject var camera = CameraModel()
+    
     var body: some View {
-        VStack {
-            Text("Player \(playViewModel.currentPlayer)")
-                .font(.title2)
-                .fontWeight(.bold)
+        ZStack {
+            Image("backgroundBlue")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
             
-            // Display selected image and its average color
-            if playViewModel.selectedImage != nil {
-                VStack {
-                    Image(uiImage: playViewModel.selectedImage!)
-                        .resizable()
-                        .scaledToFit()
-                    
-                    HStack {
-                        Circle()
-                            .frame(width: 48, height: 48)
-                            .foregroundColor(Color(uiColor: playViewModel.uicAverageColor))
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.primary, lineWidth: 2)
-                            )
-                    }
-                    
-                    Text("Delta E = \(String(describing: playViewModel.deltaE))")
-                }
-            }
-            Spacer()
-            
-            // Controls for target color selection, camera, and image submission
-            ZStack{
-                // Target color display
-                HStack {
-                    Circle()
-                        .frame(width: 48, height: 48)
-                        .foregroundColor(Color(uiColor: playViewModel.uicTargetColor))
-                        .overlay(
-                            Circle()
-                                .stroke(Color.primary, lineWidth: 2)
-                        )
-                    
-                    Spacer()
-                }
-                
-                // Button to open camera
-                HStack{
-                    Button(action: {
-                        playViewModel.showCamera.toggle()
-                    }) {
-                        Image(systemName: "camera.fill")
+            VStack(spacing: 12) {
+                // Timer
+                VStack(spacing: 8) {
+                    VStack {
+                        Image(systemName: "hourglass")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 32)
+                            .scaledToFit()
                     }
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(Color.white)
-                    .cornerRadius(16)
+                    .frame(height: 28)
+                    
+                    Text("00:30")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                 }
+                .foregroundColor(Color.white)
                 
-                // Button to submit selected image
-                if playViewModel.selectedImage != nil {
-                    HStack {
-                        Spacer()
-                        
-                        Button(action: {
-                            // Save image to array
-                            playViewModel.saveImage()
-                        }) {
-                            Image(systemName: "checkmark")
+                // Camera Preview
+                ZStack{
+                    // Black background (loading)
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: 311, height: 311)
+                    
+                    // Show camera preview
+                    if !camera.isTaken {
+                        CameraPreview(camera: camera, playViewModel: playViewModel).frame(width: 311, height: 311)
+                        Image("cameraGuide")
+                    } else {
+                        // Show captured Image
+                        if let image = camera.capturedImage {
+                            Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height: 32)
-                                .padding()
-                                .background(Color.green)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(16)
+                                .frame(width: 311, height: 311)
                         }
                     }
+                    
                 }
+                
+                // Target Color
+                ZStack {
+                    Image("targetPlayer\(playViewModel.currentPlayer)")
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.black)
+                            .frame(width: 68, height: 68)
+                        
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color(playViewModel.uicTargetColor))
+                            .frame(width: 60, height: 60)
+                            .cornerRadius(16)
+                    }
+                    .offset(x: 76, y: -52)
+                       
+                }
+                
+                // Camera Controls
+                HStack{
+                    if camera.isTaken {
+                        // Average color
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.black)
+                                .frame(width: 60, height: 60)
+                            
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(playViewModel.uicAverageColor))
+                                .frame(width: 54, height: 54)
+                        }
+                        
+                        Spacer()
+                        
+                        // Save picture
+                        Button(action: {
+                            playViewModel.saveImage()
+                        }, label: {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .frame(width: 72, height: 72)
+                        })
+                        
+                        Spacer()
+                        
+                        // Retake picture
+                        Button(action: {
+                            camera.reTake()
+                            camera.isTaken = false
+                        }, label: {
+                            Image(systemName: "arrow.clockwise.circle.fill")
+                                .resizable()
+                                .frame(width: 64, height: 64)
+                        })
+                    }
+                    else {
+                        // Take picture
+                        Button(action: {
+                            camera.takePic()
+                        }, label: {
+                            Image(systemName: "camera.circle.fill")
+                                .resizable()
+                                .frame(width: 72, height: 72)
+                        })
+                    }
+                }
+                .foregroundColor(Color.white)
+                .frame(width: 311)
+                .padding(.top, 16)
             }
+            .padding()
         }
-        .padding()
-        .fullScreenCover(isPresented: $playViewModel.showCamera) {
-            AccessCameraView()
+        .onAppear() {
+            camera.Check()
+            camera.playViewModel = playViewModel
         }
     }
 }
