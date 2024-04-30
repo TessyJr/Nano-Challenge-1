@@ -28,6 +28,40 @@ class PlayViewModel: ObservableObject {
     @Published var uicAverageColor: UIColor = UIColor.clear
     @Published var deltaE: CGFloat = 0
     
+    // State variables for timer
+    @Published var remainingTime = 30
+    var timer: Timer?
+    
+    func timeString(_ time: Int) -> String {
+        let minutes = time / 60
+        let seconds = time % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            if self.remainingTime > 0 {
+                self.remainingTime -= 1
+            } else {
+                // When timer ends
+                self.selectedImage = UIImage(named: "noPhoto")
+                self.uicAverageColor = UIColor.clear
+                self.deltaE = 100
+                self.saveImage()
+            }
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    func resetTimer() {
+        stopTimer()
+        remainingTime = 30
+        startTimer()
+    }
+    
     func saveImage() {
         results.append(Result(playerNumber: currentPlayer, image: selectedImage!, targetColor: Color(uiColor: uicTargetColor), averageColor: Color(uiColor: uicAverageColor), deltaE: deltaE))
         
@@ -40,6 +74,9 @@ class PlayViewModel: ObservableObject {
             uicTargetColor = UIColor.randomSolidColor()
             uicAverageColor = UIColor.clear
             isPlayerTransition = true
+            
+            stopTimer()
+            remainingTime = 30
         }
     }
     
@@ -58,10 +95,10 @@ class PlayViewModel: ObservableObject {
         let deltaL = lhs.L - rhs.L
         let deltaA = lhs.a - rhs.a
         let deltaB = lhs.b - rhs.b
-                
+        
         let c2 = sqrt(pow(rhs.a, 2) + pow(rhs.b, 2))
         let deltaCab = c1 - c2
-
+        
         let deltaHab = sqrt(pow(deltaA, 2) + pow(deltaB, 2) - pow(deltaCab, 2))
         
         let p1 = pow(deltaL / (kL * sL), 2)
@@ -113,6 +150,9 @@ class PlayViewModel: ObservableObject {
         uicTargetColor = UIColor.randomSolidColor()
         uicAverageColor = UIColor.clear
         deltaE = 0
+        
+        stopTimer()
+        remainingTime = 30
     }
 }
 

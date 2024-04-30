@@ -39,9 +39,17 @@ struct ResultOneView: View {
                                         .fill(Color.black)
                                         .frame(width: 112, height: 112)
                                     
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .fill(playViewModel.results[0].averageColor)
-                                        .frame(width: 104, height: 104)
+                                    if playViewModel.results[0].image == UIImage(named: "noPhoto") {
+                                        Image("noPhoto")
+                                            .resizable()
+                                            .frame(width: 104, height: 104)
+                                            .scaledToFit()
+                                            .cornerRadius(16)
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .fill(playViewModel.results[0].averageColor)
+                                            .frame(width: 104, height: 104)
+                                    }
                                 }
                             }
                             .padding()
@@ -64,10 +72,15 @@ struct ResultOneView: View {
                                 .offset(x: 76, y: -52)
                             }
                             
-                            Text(String(format: "%.2f%%", playViewModel.results[0].score))
+                            TextStroke(text: String(format: "%.2f%%", playViewModel.results[0].score), width: 4, color: Color.customTeal2)
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 64))
                                 .fontWeight(.black)
+                            
+//                            Text(String(format: "%.2f%%", playViewModel.results[0].score))
+//                                .foregroundColor(Color.white)
+//                                .font(.system(size: 64))
+//                                .fontWeight(.black)
                         }
                     }
                 }

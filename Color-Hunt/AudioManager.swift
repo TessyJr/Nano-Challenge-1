@@ -1,10 +1,3 @@
-//
-//  AudioManager.swift
-//  Color-Hunt
-//
-//  Created by Christopher Nathanael Tessy on 29/04/24.
-//
-
 import Foundation
 import AVFoundation
 
@@ -17,5 +10,26 @@ class AudioManager: ObservableObject {
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.numberOfLoops = -1
         audioPlayer.play()
+    }
+    
+    func playTimerMusic() {
+        let url = Bundle.main.url(forResource: "timerMusic", withExtension: "mp4")
+        audioPlayer = try! AVAudioPlayer(contentsOf: url!)
+//        audioPlayer.enableRate = true
+//        audioPlayer.rate = 0.9
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.play()
+    }   
+    
+    func playVictoryMusic() {
+        let url = Bundle.main.url(forResource: "victoryMusic", withExtension: "mp4")
+        audioPlayer = try! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.play()
+    }
+    
+    func pauseMusic() {
+        if audioPlayer != nil && audioPlayer.isPlaying {
+            audioPlayer.pause()            
+        }
     }
 }

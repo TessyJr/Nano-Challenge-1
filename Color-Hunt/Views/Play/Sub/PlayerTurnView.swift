@@ -23,7 +23,7 @@ struct PlayerTurnView: View {
                     }
                     .frame(height: 28)
                     
-                    Text("00:30")
+                    Text(playViewModel.timeString(playViewModel.remainingTime))
                         .font(.largeTitle)
                         .fontWeight(.bold)
                 }
@@ -38,7 +38,8 @@ struct PlayerTurnView: View {
                     
                     // Show camera preview
                     if !camera.isTaken {
-                        CameraPreview(camera: camera, playViewModel: playViewModel).frame(width: 311, height: 311)
+                        CameraPreview(camera: camera, playViewModel: playViewModel)
+                            .frame(width: 311, height: 311)
                         Image("cameraGuide")
                     } else {
                         // Show captured Image
@@ -49,8 +50,8 @@ struct PlayerTurnView: View {
                                 .frame(width: 311, height: 311)
                         }
                     }
-                    
                 }
+                .cornerRadius(16)
                 
                 // Target Color
                 ZStack {
@@ -67,12 +68,12 @@ struct PlayerTurnView: View {
                             .cornerRadius(16)
                     }
                     .offset(x: 76, y: -52)
-                       
+                    
                 }
                 
                 // Camera Controls
                 HStack{
-                    if camera.isTaken {
+                    if camera.isTaken && playViewModel.uicAverageColor != UIColor.clear {
                         // Average color
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
@@ -127,6 +128,8 @@ struct PlayerTurnView: View {
         .onAppear() {
             camera.Check()
             camera.playViewModel = playViewModel
+            
+            playViewModel.startTimer()
         }
     }
 }

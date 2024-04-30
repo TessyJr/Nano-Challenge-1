@@ -6,13 +6,19 @@ struct PlayView: View {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
+    let audioPlayer = AudioManager()
+    
     var body: some View {
         if playViewModel.isGameOver {
             // Game Over
             if playViewModel.isShowingWinner {
                 // Show winner
                 WinnerView()
+                    .onAppear() {
+                        audioPlayer.playVictoryMusic()
+                    }
                     .onDisappear {
+                        audioPlayer.pauseMusic()
                         playViewModel.resetGame()
                     }
             } else {
@@ -36,8 +42,15 @@ struct PlayView: View {
         } else {
             // Player's turn
             PlayerTurnView()
+                .onAppear() {
+                    audioPlayer.playTimerMusic()
+                }
+                .onDisappear() {
+                    audioPlayer.pauseMusic()
+                }
         }
     }
+    
 }
 
 #Preview {

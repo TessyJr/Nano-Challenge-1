@@ -4,6 +4,8 @@ struct HomeView: View {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
+    let audioPlayer = AudioManager()
+    
     var body: some View {
         NavigationStack{
             ZStack {
@@ -20,8 +22,13 @@ struct HomeView: View {
                     StartView()
                 }
             }
+            .onAppear() {
+                audioPlayer.playBgMusic()
+            }
+            .onDisappear() {
+                audioPlayer.pauseMusic()
+            }
         }
-        
     }
 }
 

@@ -125,6 +125,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
     
     func reTake() {
         self.capturedImage = nil
+        playViewModel?.selectedImage = nil
+        playViewModel?.uicAverageColor = UIColor.clear
         self.isTaken = false
         self.setUp()
     }
