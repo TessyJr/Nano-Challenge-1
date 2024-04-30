@@ -10,20 +10,21 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
     @Published var output = AVCapturePhotoOutput()
     @Published var preview : AVCaptureVideoPreviewLayer!
     
-    // pic data\
+    // pic data
     @Published var capturedImage: UIImage? = nil
     
-    var playViewModel: PlayViewModel? // Add this property
+    // view model
+    var playViewModel: PlayViewModel?
     
-    func Check() {
+    func checkAuthorization() {
         //check camera permission
         switch AVCaptureDevice.authorizationStatus(for: .video){
             
         case .authorized:
+            //setup session
             setUp()
             return
             
-            //setup session
         case .notDetermined:
             //retusting
             AVCaptureDevice.requestAccess(for: .video){(status) in
@@ -31,6 +32,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
                     self.setUp()
                 }
             }
+            
         case .denied:
             alert.toggle()
             return
@@ -139,9 +141,9 @@ struct CameraPreview: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .init(x: 90, y: -150, width: 311, height: 321))
-        let customSize = CGSize(width: 311, height: 311) // Change these values to your desired size
+        let customSize = CGSize(width: 311, height: 311)
         
-        let viewController = UIViewController()
+        _ = UIViewController()
         
         camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
         camera.preview.frame = CGRect(origin: .init(x: 0, y: 0), size: customSize)
@@ -155,8 +157,9 @@ struct CameraPreview: UIViewRepresentable {
         
         return view
     }
-    
+
     func updateUIView(_ uiView: UIView, context: Context) {
         
     }
 }
+    

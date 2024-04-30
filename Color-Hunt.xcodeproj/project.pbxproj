@@ -127,6 +127,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		53665C872BE1402D00B7419D /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				539A17762BDCB0CE002A46F2 /* Home */,
+				539A17772BDCB0E9002A46F2 /* Play */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
 		53764ACD2BD7F1C30066E371 = {
 			isa = PBXGroup;
 			children = (
@@ -146,17 +155,17 @@
 		53764AD82BD7F1C30066E371 /* Color-Hunt */ = {
 			isa = PBXGroup;
 			children = (
+				53665C4F2BDF907800B7419D /* Info.plist */,
+				53764ADD2BD7F1C40066E371 /* Assets.xcassets */,
 				53665C812BE0F3DB00B7419D /* backgroundMusic.mp4 */,
 				53665C832BE0F3DC00B7419D /* timerMusic.mp4 */,
 				53665C822BE0F3DB00B7419D /* victoryMusic.mp4 */,
-				53665C4F2BDF907800B7419D /* Info.plist */,
 				53764AD92BD7F1C30066E371 /* Color_HuntApp.swift */,
 				539A176B2BDB9730002A46F2 /* Models */,
 				539A176E2BDBA064002A46F2 /* Views */,
 				539A17732BDBA28C002A46F2 /* ViewModels */,
-				53764ADD2BD7F1C40066E371 /* Assets.xcassets */,
-				53764ADF2BD7F1C40066E371 /* Preview Content */,
 				53665C562BDFA16600B7419D /* AudioManager.swift */,
+				53764ADF2BD7F1C40066E371 /* Preview Content */,
 			);
 			path = "Color-Hunt";
 			sourceTree = "<group>";
@@ -180,9 +189,8 @@
 		539A176E2BDBA064002A46F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53665C872BE1402D00B7419D /* Presenters */,
 				53665C5E2BE0DB6900B7419D /* Components */,
-				539A17762BDCB0CE002A46F2 /* Home */,
-				539A17772BDCB0E9002A46F2 /* Play */,
 			);
 			path = Views;
 			sourceTree = "<group>";

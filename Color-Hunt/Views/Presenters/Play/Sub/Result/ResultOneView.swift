@@ -76,11 +76,6 @@ struct ResultOneView: View {
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 64))
                                 .fontWeight(.black)
-                            
-//                            Text(String(format: "%.2f%%", playViewModel.results[0].score))
-//                                .foregroundColor(Color.white)
-//                                .font(.system(size: 64))
-//                                .fontWeight(.black)
                         }
                     }
                 }

@@ -56,12 +56,6 @@ class PlayViewModel: ObservableObject {
         timer?.invalidate()
     }
     
-    func resetTimer() {
-        stopTimer()
-        remainingTime = 30
-        startTimer()
-    }
-    
     func saveImage() {
         results.append(Result(playerNumber: currentPlayer, image: selectedImage!, targetColor: Color(uiColor: uicTargetColor), averageColor: Color(uiColor: uicAverageColor), deltaE: deltaE))
         

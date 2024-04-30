@@ -72,7 +72,7 @@ struct PlayerTurnView: View {
                 }
                 
                 // Camera Controls
-                HStack{
+                HStack {
                     if camera.isTaken && playViewModel.uicAverageColor != UIColor.clear {
                         // Average color
                         ZStack {
@@ -105,7 +105,7 @@ struct PlayerTurnView: View {
                         }, label: {
                             Image(systemName: "arrow.clockwise.circle.fill")
                                 .resizable()
-                                .frame(width: 64, height: 64)
+                                .frame(width: 60, height: 60)
                         })
                     }
                     else {
@@ -117,6 +117,7 @@ struct PlayerTurnView: View {
                                 .resizable()
                                 .frame(width: 72, height: 72)
                         })
+                        .disabled(camera.isTaken)
                     }
                 }
                 .foregroundColor(Color.white)
@@ -126,7 +127,7 @@ struct PlayerTurnView: View {
             .padding()
         }
         .onAppear() {
-            camera.Check()
+            camera.checkAuthorization()
             camera.playViewModel = playViewModel
             
             playViewModel.startTimer()

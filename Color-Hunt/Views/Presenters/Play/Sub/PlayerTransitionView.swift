@@ -4,6 +4,9 @@ struct PlayerTransitionView: View {
     // Environment object for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
+    @State var isButtonDisabled = true
+    @State var opacity = 0.0
+    
     var body: some View {
         ZStack {
             backgroundImageView(for: playViewModel.currentPlayer)
@@ -11,6 +14,15 @@ struct PlayerTransitionView: View {
             VStack {
                 transitionImageView(for: playViewModel.currentPlayer)
                 transitionButtonView(for: playViewModel.currentPlayer)
+                    .disabled(isButtonDisabled)
+            }
+            .opacity(opacity)
+        }
+        .animation(.easeIn(duration: 0.5), value: opacity)
+        .onAppear() {
+            opacity = 1.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isButtonDisabled = false
             }
         }
     }

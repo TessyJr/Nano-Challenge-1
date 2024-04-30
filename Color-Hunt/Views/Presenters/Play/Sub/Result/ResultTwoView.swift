@@ -42,15 +42,25 @@ struct ResultTwoView: View {
                                 .frame(width: 36, height: 36)
                                 .foregroundColor(Color.customTeal)
                             
+                            
                             ZStack {
                                 RoundedRectangle(cornerRadius: 14)
                                     .fill(Color.black)
                                     .frame(width: 70, height: 70)
                                 
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(playViewModel.results[0].averageColor)
-                                    .frame(width: 64, height: 64)
+                                if playViewModel.results[0].image == UIImage(named: "noPhoto") {
+                                    Image("noPhoto")
+                                        .resizable()
+                                        .frame(width: 64, height: 64)
+                                        .scaledToFit()
+                                        .cornerRadius(12)
+                                } else {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(playViewModel.results[0].averageColor)
+                                        .frame(width: 64, height: 64)
+                                }
                             }
+                            
                         }
                         .padding(13)
                         .background(Color.white)
@@ -74,7 +84,7 @@ struct ResultTwoView: View {
                             .offset(x: 52.5, y: -35.5)
                         }
                         
-                        Text(String(format: "%.2f%%", playViewModel.results[0].score))
+                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[0].score), width: 4, color: Color.customTeal2)
                             .foregroundColor(Color.white)
                             .font(.system(size: 48))
                             .fontWeight(.black)
@@ -119,9 +129,17 @@ struct ResultTwoView: View {
                                     .fill(Color.black)
                                     .frame(width: 70, height: 70)
                                 
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(playViewModel.results[1].averageColor)
-                                    .frame(width: 64, height: 64)
+                                if playViewModel.results[1].image == UIImage(named: "noPhoto") {
+                                    Image("noPhoto")
+                                        .resizable()
+                                        .frame(width: 64, height: 64)
+                                        .scaledToFit()
+                                        .cornerRadius(12)
+                                } else {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(playViewModel.results[1].averageColor)
+                                        .frame(width: 64, height: 64)
+                                }
                             }
                         }
                         .padding(13)
@@ -146,7 +164,7 @@ struct ResultTwoView: View {
                             .offset(x: 52.5, y: -35.5)
                         }
                         
-                        Text(String(format: "%.2f%%", playViewModel.results[1].score))
+                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[1].score), width: 4, color: Color.customOrange2)
                             .foregroundColor(Color.white)
                             .font(.system(size: 48))
                             .fontWeight(.black)
