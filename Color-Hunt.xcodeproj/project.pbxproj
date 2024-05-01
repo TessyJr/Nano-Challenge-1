@@ -30,7 +30,8 @@
 		539A176D2BDB9744002A46F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A176C2BDB9744002A46F2 /* Result.swift */; };
 		539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17742BDBA2A4002A46F2 /* PlayViewModel.swift */; };
 		539A17792BDD125F002A46F2 /* PlayerTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17782BDD125F002A46F2 /* PlayerTurnView.swift */; };
-		53E7F8A62BE1D5B60066D4AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E7F8A52BE1D5B60066D4AE /* Launch Screen.storyboard */; };
+		53E7F8AA2BE22CC40066D4AE /* TextAnimatableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E7F8A92BE22CC40066D4AE /* TextAnimatableValue.swift */; };
+		53E7F8AC2BE267260066D4AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E7F8AB2BE267260066D4AE /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +59,8 @@
 		539A176C2BDB9744002A46F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		539A17742BDBA2A4002A46F2 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		539A17782BDD125F002A46F2 /* PlayerTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTurnView.swift; sourceTree = "<group>"; };
-		53E7F8A52BE1D5B60066D4AE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		53E7F8A92BE22CC40066D4AE /* TextAnimatableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAnimatableValue.swift; sourceTree = "<group>"; };
+		53E7F8AB2BE267260066D4AE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		53665C5E2BE0DB6900B7419D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				53E7F8A92BE22CC40066D4AE /* TextAnimatableValue.swift */,
 				53665C5F2BE0DB7A00B7419D /* TextStroke.swift */,
 			);
 			path = Components;
@@ -168,7 +171,7 @@
 				539A17732BDBA28C002A46F2 /* ViewModels */,
 				53665C562BDFA16600B7419D /* AudioManager.swift */,
 				53764ADF2BD7F1C40066E371 /* Preview Content */,
-				53E7F8A52BE1D5B60066D4AE /* Launch Screen.storyboard */,
+				53E7F8AB2BE267260066D4AE /* Launch Screen.storyboard */,
 			);
 			path = "Color-Hunt";
 			sourceTree = "<group>";
@@ -288,7 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E7F8A62BE1D5B60066D4AE /* Launch Screen.storyboard in Resources */,
+				53E7F8AC2BE267260066D4AE /* Launch Screen.storyboard in Resources */,
 				53665C852BE0F3DC00B7419D /* victoryMusic.mp4 in Resources */,
 				53764AE12BD7F1C40066E371 /* Preview Assets.xcassets in Resources */,
 				53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */,
@@ -318,6 +321,7 @@
 				53764ADA2BD7F1C30066E371 /* Color_HuntApp.swift in Sources */,
 				53665C602BE0DB7A00B7419D /* TextStroke.swift in Sources */,
 				539A176D2BDB9744002A46F2 /* Result.swift in Sources */,
+				53E7F8AA2BE22CC40066D4AE /* TextAnimatableValue.swift in Sources */,
 				539A17792BDD125F002A46F2 /* PlayerTurnView.swift in Sources */,
 				53665C4B2BDF24F400B7419D /* WinnerView.swift in Sources */,
 				539A17682BDB8F21002A46F2 /* PlayerTransitionView.swift in Sources */,

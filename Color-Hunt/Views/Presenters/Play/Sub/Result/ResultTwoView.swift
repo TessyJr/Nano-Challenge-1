@@ -1,12 +1,18 @@
 import SwiftUI
 
-struct ResultTwoView: View {
+struct ResultTwoView: View, Animatable {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
     @State var winner: Int = 0
-    @State var opacityP1: Double = 1.0
-    @State var opacityP2: Double = 1.0
+    @State var opacityBgP1: Double = 1.0
+    @State var opacityBgP2: Double = 1.0
+    
+    @State var scoreP1: Double = 0
+    @State var opacityP1: Double = 0
+    @State var scoreP2: Double = 0
+    @State var opacityP2: Double = 0
+    
     @State var isTappable: Bool = false
     
     var body: some View {
@@ -20,8 +26,7 @@ struct ResultTwoView: View {
                     Image("backgroundTeal")
                         .resizable()
                         .ignoresSafeArea()
-                        .opacity(opacityP1)
-                        .animation(.easeIn(duration: 0.2), value: opacityP1)
+                        .opacity(opacityBgP1)
                     
                     VStack(spacing: 12) {
                         HStack {
@@ -85,11 +90,9 @@ struct ResultTwoView: View {
                             .offset(x: 52.5, y: -35.5)
                         }
                         
-                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[0].score), width: 4, color: Color.customTeal2)
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 48))
-                            .fontWeight(.black)
+                        TextAnimatableValue(value: scoreP1, strokeColor: Color.customTeal2, fontSize: 48.0, fontWeight: .black, strokeWidth: 3.5)
                     }
+                    .opacity(opacityP1)
                 }
             }
             
@@ -102,8 +105,7 @@ struct ResultTwoView: View {
                     Image("backgroundOrange")
                         .resizable()
                         .ignoresSafeArea()
-                        .opacity(opacityP2)
-                        .animation(.easeIn(duration: 0.25), value: opacityP2)
+                        .opacity(opacityBgP2)
                     
                     VStack(spacing: 12) {
                         HStack {
@@ -165,27 +167,51 @@ struct ResultTwoView: View {
                             .offset(x: 52.5, y: -35.5)
                         }
                         
-                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[1].score), width: 4, color: Color.customOrange2)
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 48))
-                            .fontWeight(.black)
+                        TextAnimatableValue(value: scoreP2, strokeColor: Color.customOrange2, fontSize: 48.0, fontWeight: .black, strokeWidth: 3.5)
                     }
+                    .opacity(opacityP2)
                 }
             }
         }
         .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    opacityP1 = 1
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(Animation.easeIn(duration: 1)) {
+                        scoreP1 = playViewModel.results[0].score
+                    }
+                }
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    opacityP2 = 1
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(Animation.easeIn(duration: 1)) {
+                        scoreP2 = playViewModel.results[1].score
+                    }
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
                 playViewModel.calculateWinner()
                 winner = playViewModel.winner!.playerNumber
                 
-                switch winner {
-                case 1:
-                    opacityP2 = 0
-                case 2:
-                    opacityP1 = 0
-                default:
-                    opacityP1 = 0
-                    opacityP2 = 0
+                withAnimation(Animation.easeIn(duration: 0.2)) {
+                    switch winner {
+                    case 1:
+                        opacityBgP2 = 0
+                    case 2:
+                        opacityBgP1 = 0
+                    default:
+                        opacityBgP1 = 0
+                        opacityBgP2 = 0
+                    }
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

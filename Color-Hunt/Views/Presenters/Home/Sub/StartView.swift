@@ -1,11 +1,14 @@
 import SwiftUI
 
-struct StartView: View {
+struct StartView: View, Animatable {
     // Environment object for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
     // State variable to track if the popover should be shown
     @State private var showHowToPlay = false
+    
+    let score = 93.21
+    @State var value1: Double = 0.0
     
     var body: some View {
         ZStack {

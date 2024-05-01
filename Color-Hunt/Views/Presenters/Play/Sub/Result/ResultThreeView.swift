@@ -5,10 +5,17 @@ struct ResultThreeView: View {
     @EnvironmentObject var playViewModel: PlayViewModel
     
     @State var winner: Int = 0
-    @State var opacityP1: Double = 1.0
-    @State var opacityP2: Double = 1.0
-    @State var opacityP3: Double = 1.0
+    @State var opacityBgP1: Double = 1.0
+    @State var opacityBgP2: Double = 1.0
+    @State var opacityBgP3: Double = 1.0
     @State var isTappable: Bool = false
+    
+    @State var scoreP1: Double = 0
+    @State var opacityP1: Double = 0
+    @State var scoreP2: Double = 0
+    @State var opacityP2: Double = 0
+    @State var scoreP3: Double = 0
+    @State var opacityP3: Double = 0
     
     var body: some View {
         Grid(horizontalSpacing: 6, verticalSpacing: 6) {
@@ -21,8 +28,7 @@ struct ResultThreeView: View {
                     Image("backgroundTeal")
                         .resizable()
                         .ignoresSafeArea()
-                        .opacity(opacityP1)
-                        .animation(.easeIn(duration: 0.2), value: opacityP1)
+                        .opacity(opacityBgP1)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -83,11 +89,9 @@ struct ResultThreeView: View {
                             .offset(x: 39, y: -27)
                         }
                         
-                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[0].score), width: 3, color: Color.customTeal2)
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 36))
-                            .fontWeight(.black)
+                        TextAnimatableValue(value: scoreP1, strokeColor: Color.customTeal2, fontSize: 32.0, fontWeight: .black, strokeWidth: 3.0)
                     }
+                    .opacity(opacityP1)
                 }
                 
                 ZStack {
@@ -98,8 +102,7 @@ struct ResultThreeView: View {
                     Image("backgroundOrange")
                         .resizable()
                         .ignoresSafeArea()
-                        .opacity(opacityP2)
-                        .animation(.easeIn(duration: 0.2), value: opacityP2)
+                        .opacity(opacityBgP2)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -160,11 +163,9 @@ struct ResultThreeView: View {
                             .offset(x: 39, y: -27)
                         }
                         
-                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[1].score), width: 3, color: Color.customOrange2)
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 36))
-                            .fontWeight(.black)
+                        TextAnimatableValue(value: scoreP2, strokeColor: Color.customOrange2, fontSize: 32.0, fontWeight: .black, strokeWidth: 3.0)
                     }
+                    .opacity(opacityP2)
                 }
             }
             
@@ -177,8 +178,7 @@ struct ResultThreeView: View {
                     Image("backgroundPink")
                         .resizable()
                         .ignoresSafeArea()
-                        .opacity(opacityP3)
-                        .animation(.easeIn(duration: 0.2), value: opacityP3)
+                        .opacity(opacityBgP3)
                     
                     VStack(alignment: .center, spacing: 12) {
                         HStack {
@@ -239,11 +239,9 @@ struct ResultThreeView: View {
                             .offset(x: 39, y: -27)
                         }
                         
-                        TextStroke(text: String(format: "%.2f%%", playViewModel.results[2].score), width: 3, color: Color.customPink2)
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 36))
-                            .fontWeight(.black)
+                        TextAnimatableValue(value: scoreP3, strokeColor: Color.customPink2, fontSize: 32.0, fontWeight: .black, strokeWidth: 3.0)
                     }
+                    .opacity(opacityP3)
                 }
                 
                 ZStack {
@@ -254,24 +252,62 @@ struct ResultThreeView: View {
             }
         }
         .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    opacityP1 = 1
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(Animation.easeIn(duration: 1)) {
+                        scoreP1 = playViewModel.results[0].score
+                    }
+                }
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    opacityP2 = 1
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(Animation.easeIn(duration: 1)) {
+                        scoreP2 = playViewModel.results[1].score
+                    }
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    opacityP3 = 1
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(Animation.easeIn(duration: 1)) {
+                        scoreP3 = playViewModel.results[2].score
+                    }
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
                 playViewModel.calculateWinner()
                 winner = playViewModel.winner!.playerNumber
                 
-                switch winner {
-                case 1:
-                    opacityP2 = 0
-                    opacityP3 = 0
-                case 2:
-                    opacityP1 = 0
-                    opacityP3 = 0
-                case 3:
-                    opacityP1 = 0
-                    opacityP2 = 0
-                default:
-                    opacityP1 = 0
-                    opacityP2 = 0
-                    opacityP3 = 0
+                withAnimation(Animation.easeIn(duration: 0.2)) {
+                    switch winner {
+                    case 1:
+                        opacityBgP2 = 0
+                        opacityBgP3 = 0
+                    case 2:
+                        opacityBgP1 = 0
+                        opacityBgP3 = 0
+                    case 3:
+                        opacityBgP1 = 0
+                        opacityBgP2 = 0
+                    default:
+                        opacityBgP1 = 0
+                        opacityBgP2 = 0
+                        opacityBgP3 = 0
+                    }
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

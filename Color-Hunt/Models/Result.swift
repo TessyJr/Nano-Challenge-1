@@ -20,10 +20,11 @@ struct Result: Identifiable, Hashable {
         self.averageColor = averageColor
         self.deltaE = deltaE
         
+        // Calculate score from deltaE
         if deltaE >= 100 {
-            self.score = 0
+            self.score = 0.00
         }else {
-            self.score = 100 - deltaE
+            self.score = 100.00 - deltaE
         }
     }
 }

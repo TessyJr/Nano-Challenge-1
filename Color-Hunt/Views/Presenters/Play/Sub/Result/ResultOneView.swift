@@ -1,8 +1,13 @@
 import SwiftUI
 
-struct ResultOneView: View {
+struct ResultOneView: View, Animatable {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
+    
+    @State var scoreP1: Double = 0
+    @State var opacityP1: Double = 0
+    
+    @State var isTappable: Bool = false
     
     var body: some View {
         Grid {
@@ -72,21 +77,41 @@ struct ResultOneView: View {
                                 .offset(x: 76, y: -52)
                             }
                             
-                            TextStroke(text: String(format: "%.2f%%", playViewModel.results[0].score), width: 4, color: Color.customTeal2)
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 64))
-                                .fontWeight(.black)
+                            TextAnimatableValue(value: scoreP1, strokeColor: Color.customTeal2, fontSize: 64.0, fontWeight: .black, strokeWidth: 4.0)
                         }
                     }
+                    .opacity(opacityP1)
                 }
             }
             
         }
         .onAppear() {
-            playViewModel.calculateWinner()
+            // P1 animation 2.0s (0.5s delay + 1.5s animation)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    opacityP1 = 1
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(Animation.easeIn(duration: 1)) {
+                        scoreP1 = playViewModel.results[0].score
+                    }
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                playViewModel.calculateWinner()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    isTappable = true
+                }
+            }
+            
         }
         .onTapGesture {
-            playViewModel.isShowingWinner = true
+            if isTappable {
+                playViewModel.isShowingWinner = true
+            }
         }
     }
 }

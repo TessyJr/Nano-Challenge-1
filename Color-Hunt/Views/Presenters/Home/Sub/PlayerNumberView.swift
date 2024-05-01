@@ -46,12 +46,9 @@ struct PlayerNumberView: View {
                 ZStack {
                     PlayerNumberButton(playerNumber: 1)
                     
-                    Button(action: {}) {
-                        Image("selectPlayer1")
-                    }
-                    .opacity(isDisabledBtn1 ? 1.0 : 0.0)
-                    .padding(.bottom, -32)
-                    .disabled(true)
+                    Image("selectPlayer1")
+                        .opacity(isDisabledBtn1 ? 1.0 : 0.0)
+                        .padding(.bottom, -32)
                 }
                 .opacity(opacityBtn1)
                 .offset(x: offsetXBtn1)
@@ -59,12 +56,9 @@ struct PlayerNumberView: View {
                 ZStack {
                     PlayerNumberButton(playerNumber: 2)
                     
-                    Button(action: {}) {
-                        Image("selectPlayer2")
-                    }
-                    .opacity(isDisabledBtn2 ? 1.0 : 0.0)
-                    .padding(.bottom, -32)
-                    .disabled(true)
+                    Image("selectPlayer2")
+                        .opacity(isDisabledBtn2 ? 1.0 : 0.0)
+                        .padding(.bottom, -32)
                 }
                 .opacity(opacityBtn2)
                 .offset(x: offsetXBtn2)
@@ -72,12 +66,9 @@ struct PlayerNumberView: View {
                 ZStack {
                     PlayerNumberButton(playerNumber: 3)
                     
-                    Button(action: {}) {
-                        Image("selectPlayer3")
-                    }
-                    .opacity(isDisabledBtn3 ? 1.0 : 0.0)
-                    .padding(.bottom, -32)
-                    .disabled(true)
+                    Image("selectPlayer3")
+                        .opacity(isDisabledBtn3 ? 1.0 : 0.0)
+                        .padding(.bottom, -32)
                 }
                 .opacity(opacityBtn3)
                 .offset(x: offsetXBtn3)
@@ -85,12 +76,9 @@ struct PlayerNumberView: View {
                 ZStack {
                     PlayerNumberButton(playerNumber: 4)
                     
-                    Button(action: {}) {
-                        Image("selectPlayer4")
-                    }
-                    .opacity(isDisabledBtn4 ? 1.0 : 0.0)
-                    .padding(.bottom, -32)
-                    .disabled(true)
+                    Image("selectPlayer4")
+                        .opacity(isDisabledBtn4 ? 1.0 : 0.0)
+                        .padding(.bottom, -32)
                 }
                 .opacity(opacityBtn4)
                 .offset(x: offsetXBtn4)
