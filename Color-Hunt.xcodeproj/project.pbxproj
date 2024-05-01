@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532003402BE291D400E1AFB7 /* Confetti in Frameworks */ = {isa = PBXBuildFile; productRef = 5320033F2BE291D400E1AFB7 /* Confetti */; };
 		53665C462BDE7B5200B7419D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C452BDE7B5200B7419D /* HomeView.swift */; };
 		53665C492BDE983C00B7419D /* ResultOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C482BDE983C00B7419D /* ResultOneView.swift */; };
 		53665C4B2BDF24F400B7419D /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53665C4A2BDF24F400B7419D /* WinnerView.swift */; };
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532003402BE291D400E1AFB7 /* Confetti in Frameworks */,
 				53764AED2BD8D0B30066E371 /* ColorKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +247,7 @@
 			name = "Color-Hunt";
 			packageProductDependencies = (
 				53764AEC2BD8D0B30066E371 /* ColorKit */,
+				5320033F2BE291D400E1AFB7 /* Confetti */,
 			);
 			productName = "Color-Hunt";
 			productReference = 53764AD62BD7F1C30066E371 /* Color-Hunt.app */;
@@ -276,6 +279,7 @@
 			mainGroup = 53764ACD2BD7F1C30066E371;
 			packageReferences = (
 				53764AEB2BD8D0B30066E371 /* XCRemoteSwiftPackageReference "ColorKit" */,
+				5320033E2BE291D400E1AFB7 /* XCRemoteSwiftPackageReference "confetti-swiftui" */,
 			);
 			productRefGroup = 53764AD72BD7F1C30066E371 /* Products */;
 			projectDirPath = "";
@@ -548,6 +552,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5320033E2BE291D400E1AFB7 /* XCRemoteSwiftPackageReference "confetti-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ottijp/confetti-swiftui.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		53764AEB2BD8D0B30066E371 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -559,6 +571,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5320033F2BE291D400E1AFB7 /* Confetti */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5320033E2BE291D400E1AFB7 /* XCRemoteSwiftPackageReference "confetti-swiftui" */;
+			productName = Confetti;
+		};
 		53764AEC2BD8D0B30066E371 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 53764AEB2BD8D0B30066E371 /* XCRemoteSwiftPackageReference "ColorKit" */;

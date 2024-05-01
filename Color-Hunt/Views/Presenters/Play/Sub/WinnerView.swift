@@ -1,4 +1,5 @@
 import SwiftUI
+import Confetti
 
 struct WinnerView: View {
     // Environment object for view model
@@ -6,6 +7,8 @@ struct WinnerView: View {
     
     // Environment variable to manage presentation mode
     @Environment(\.presentationMode) var presentationMode
+    
+    @State private var offsetY: Double = 0.0
     
     var body: some View {
         ZStack {
@@ -17,8 +20,13 @@ struct WinnerView: View {
                     Image("crown")
                         .offset(x: -132, y: -220)
                 }
+                .offset(y: offsetY)
+                .animation(.spring(duration: 1, bounce: 0.9), value: offsetY)
+                
                 transitionButtonView(for: playViewModel.winner!)
             }
+            
+            ConfettiView(emissionDuration: 2.0)
         }
     }
     
