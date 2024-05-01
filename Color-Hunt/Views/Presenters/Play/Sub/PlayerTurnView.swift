@@ -31,15 +31,25 @@ struct PlayerTurnView: View {
                 
                 // Camera Preview
                 ZStack{
-                    // Black background (loading)
-                    Rectangle()
-                        .fill(Color.black)
-                        .frame(width: 311, height: 311)
-                    
+                    // Black background
+                    if playViewModel.selectedImage == nil {
+                        Rectangle()
+                            .fill(Color.black)
+                            .frame(width: 311, height: 311)
+                            .cornerRadius(16)
+                    } else {
+                        Rectangle()
+                            .fill(Color(playViewModel.uicAverageColor))
+                            .frame(width: 311, height: 311)
+                            .cornerRadius(16)
+                    }
+                
                     // Show camera preview
                     if !camera.isTaken {
                         CameraPreview(camera: camera, playViewModel: playViewModel)
-                            .frame(width: 311, height: 311)
+                            .frame(width: 300, height: 300)
+                            .cornerRadius(12)
+                        
                         Image("cameraGuide")
                     } else {
                         // Show captured Image
@@ -47,11 +57,11 @@ struct PlayerTurnView: View {
                             Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 311, height: 311)
+                                .frame(width: 300, height: 300)
+                                .cornerRadius(12)
                         }
                     }
                 }
-                .cornerRadius(16)
                 
                 // Target Color
                 ZStack {

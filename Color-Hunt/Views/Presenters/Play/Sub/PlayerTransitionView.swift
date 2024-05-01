@@ -4,8 +4,8 @@ struct PlayerTransitionView: View {
     // Environment object for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
-    @State var isButtonDisabled = true
-    @State var opacity = 0.0
+    @State var isButtonDisabled: Bool = true
+    @State var opacity: Double = 0.0
     
     var body: some View {
         ZStack {

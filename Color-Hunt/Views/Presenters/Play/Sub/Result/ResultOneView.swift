@@ -84,9 +84,9 @@ struct ResultOneView: View {
         }
         .onAppear() {
             playViewModel.calculateWinner()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                playViewModel.isShowingWinner = true
-            }
+        }
+        .onTapGesture {
+            playViewModel.isShowingWinner = true
         }
     }
 }

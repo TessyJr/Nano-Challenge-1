@@ -4,10 +4,11 @@ struct ResultThreeView: View {
     // Environment object to for view model
     @EnvironmentObject var playViewModel: PlayViewModel
     
-    @State var winner = 0
-    @State var opacityP1 = 1.0
-    @State var opacityP2 = 1.0
-    @State var opacityP3 = 1.0
+    @State var winner: Int = 0
+    @State var opacityP1: Double = 1.0
+    @State var opacityP2: Double = 1.0
+    @State var opacityP3: Double = 1.0
+    @State var isTappable: Bool = false
     
     var body: some View {
         Grid(horizontalSpacing: 6, verticalSpacing: 6) {
@@ -273,9 +274,14 @@ struct ResultThreeView: View {
                     opacityP3 = 0
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    playViewModel.isShowingWinner = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    isTappable = true
                 }
+            }
+        }
+        .onTapGesture {
+            if isTappable {
+                playViewModel.isShowingWinner = true
             }
         }
     }

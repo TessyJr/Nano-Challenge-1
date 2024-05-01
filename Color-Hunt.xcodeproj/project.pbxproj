@@ -30,6 +30,7 @@
 		539A176D2BDB9744002A46F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A176C2BDB9744002A46F2 /* Result.swift */; };
 		539A17752BDBA2A4002A46F2 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17742BDBA2A4002A46F2 /* PlayViewModel.swift */; };
 		539A17792BDD125F002A46F2 /* PlayerTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A17782BDD125F002A46F2 /* PlayerTurnView.swift */; };
+		53E7F8A62BE1D5B60066D4AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E7F8A52BE1D5B60066D4AE /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		539A176C2BDB9744002A46F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		539A17742BDBA2A4002A46F2 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		539A17782BDD125F002A46F2 /* PlayerTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTurnView.swift; sourceTree = "<group>"; };
+		53E7F8A52BE1D5B60066D4AE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				539A17732BDBA28C002A46F2 /* ViewModels */,
 				53665C562BDFA16600B7419D /* AudioManager.swift */,
 				53764ADF2BD7F1C40066E371 /* Preview Content */,
+				53E7F8A52BE1D5B60066D4AE /* Launch Screen.storyboard */,
 			);
 			path = "Color-Hunt";
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E7F8A62BE1D5B60066D4AE /* Launch Screen.storyboard in Resources */,
 				53665C852BE0F3DC00B7419D /* victoryMusic.mp4 in Resources */,
 				53764AE12BD7F1C40066E371 /* Preview Assets.xcassets in Resources */,
 				53764ADE2BD7F1C40066E371 /* Assets.xcassets in Resources */,
@@ -461,6 +465,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -497,6 +502,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

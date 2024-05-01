@@ -136,30 +136,24 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
 
 // Setting preview
 struct CameraPreview: UIViewRepresentable {
-    @ObservedObject var camera : CameraModel
+    @ObservedObject var camera: CameraModel
     var playViewModel: PlayViewModel
     
     func makeUIView(context: Context) -> UIView {
-        let view = UIView(frame: .init(x: 90, y: -150, width: 311, height: 321))
-        let customSize = CGSize(width: 311, height: 311)
-        
-        _ = UIViewController()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         
         camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
-        camera.preview.frame = CGRect(origin: .init(x: 0, y: 0), size: customSize)
-        camera.preview.position = CGPoint(x: 155.5, y: 155.5)
-        //own properti
+        camera.preview.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 300))
         camera.preview.videoGravity = .resizeAspectFill
         view.layer.addSublayer(camera.preview)
         
-        //starting
         camera.session.startRunning()
         
         return view
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-        
+        // No updates needed for now
     }
 }
     

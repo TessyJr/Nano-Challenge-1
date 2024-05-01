@@ -37,7 +37,6 @@ struct StartView: View {
                             .background(Color.white)
                             .cornerRadius(16)
                     }
-                    
                 }
             }
             
