@@ -22,7 +22,7 @@ struct StartView: View, Animatable {
                         Image(systemName: "play.circle.fill")
                             .resizable()
                             .frame(width: 48, height: 48)
-                            .padding(.horizontal, 64)
+                            .padding(.horizontal, 84)
                             .padding(.vertical, 16)
                             .foregroundColor(Color.customBlue)
                             .background(Color.white)
