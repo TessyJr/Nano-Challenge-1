@@ -32,6 +32,19 @@ class PlayViewModel: ObservableObject {
     @Published var remainingTime = 30
     var timer: Timer?
     
+    class HapticManager {
+        static let instance = HapticManager() // Singleton
+        func notification(type: UINotificationFeedbackGenerator.FeedbackType) {
+            let generator = UINotificationFeedbackGenerator ()
+            generator.notificationOccurred(type)
+        }
+        func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+            let generator = UIImpactFeedbackGenerator(style: style)
+            generator.impactOccurred()
+        }
+    }
+
+    
     func timeString(_ time: Int) -> String {
         let minutes = time / 60
         let seconds = time % 60
@@ -42,8 +55,14 @@ class PlayViewModel: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if self.remainingTime > 0 {
                 self.remainingTime -= 1
+                
+                if self.remainingTime <= 5 {
+                    HapticManager.instance.notification(type: .error)
+                }
             } else {
                 // When timer ends
+                self.stopTimer()
+                
                 self.selectedImage = UIImage(named: "noPhoto")
                 self.uicAverageColor = UIColor.clear
                 self.deltaE = 100
