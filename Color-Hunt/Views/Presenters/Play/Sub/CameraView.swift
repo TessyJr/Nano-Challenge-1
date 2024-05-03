@@ -171,8 +171,16 @@ struct CameraPreview: UIViewRepresentable {
         let pinchGesture = UIPinchGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handlePinchGesture(_:)))
         view.addGestureRecognizer(pinchGesture)
         
+        // Add tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTapGesture(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
+        // Ensure that taps are recognized simultaneously with other gestures
+        tapGesture.require(toFail: pinchGesture)
+        
         return view
     }
+
     
     func updateUIView(_ uiView: UIView, context: Context) {
         // No updates needed for now
@@ -213,5 +221,33 @@ struct CameraPreview: UIViewRepresentable {
                 }
             }
         }
+        
+        @objc func handleTapGesture(_ gesture: UITapGestureRecognizer) {
+            guard let device = AVCaptureDevice.default(for: .video) else { return }
+            
+            if gesture.state == .ended {
+                // Access the parent view of the coordinator
+                if let parentView = gesture.view?.superview {
+                    let pointOfInterest = gesture.location(in: parentView)
+                    
+                    // Convert tap location to camera focus point
+                    let focusPoint = parent.camera.preview.captureDevicePointConverted(fromLayerPoint: pointOfInterest)
+                    
+                    // Focus the camera at the tapped point
+                    do {
+                        try device.lockForConfiguration()
+                        defer { device.unlockForConfiguration() }
+                        
+                        if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(.autoFocus) {
+                            device.focusPointOfInterest = focusPoint
+                            device.focusMode = .autoFocus
+                        }
+                    } catch {
+                        print("Failed to focus camera: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+
     }
 }
