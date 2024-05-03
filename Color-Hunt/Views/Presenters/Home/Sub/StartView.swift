@@ -10,6 +10,8 @@ struct StartView: View, Animatable {
     let score = 93.21
     @State var value1: Double = 0.0
     
+    @State var offsetXAll: Double = -500.0
+    
     var body: some View {
         ZStack {
             VStack {
@@ -17,7 +19,13 @@ struct StartView: View, Animatable {
                 
                 HStack(spacing: 16) {
                     Button(action: {
-                        playViewModel.isSelectingPlayerNumber = true
+                        withAnimation(.easeIn(duration: 0.2)) {
+                            offsetXAll = -500
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            playViewModel.isSelectingPlayerNumber = true
+                        }
                     }) {
                         Image(systemName: "play.circle.fill")
                             .resizable()
@@ -60,6 +68,12 @@ struct StartView: View, Animatable {
                     .background(Color.white)
                     .cornerRadius(16)
                 }
+            }
+        }
+        .offset(x: offsetXAll)
+        .onAppear() {
+            withAnimation(.easeIn(duration: 0.2)) {
+                offsetXAll = 0
             }
         }
     }

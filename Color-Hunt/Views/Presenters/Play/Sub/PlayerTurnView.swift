@@ -49,8 +49,6 @@ struct PlayerTurnView: View {
                         CameraPreview(camera: camera, playViewModel: playViewModel)
                             .frame(width: 300, height: 300)
                             .cornerRadius(12)
-                        
-                        Image("cameraGuide")
                     } else {
                         // Show captured Image
                         if let image = camera.capturedImage {

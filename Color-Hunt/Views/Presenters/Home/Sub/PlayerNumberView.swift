@@ -18,104 +18,112 @@ struct PlayerNumberView: View {
     @State var isDisabledBtn3: Bool = true
     @State var isDisabledBtn4: Bool = true
     
+    @State var offsetXAll: Double = 500.0
+    
     var body: some View {
-        ZStack {
-            Image("backgroundBlue")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                HStack {
-                    Button(action: {
-                        playViewModel.isSelectingPlayerNumber = false
-                    }) {
-                        Image(systemName: "arrowshape.left.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .padding(16)
-                            .foregroundColor(Color.customBlue)
-                            .background(Color.white)
-                            .cornerRadius(16)
+        VStack {
+            HStack {
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.2)) {
+                        offsetXAll = 500.0
                     }
-                    .padding(.leading, 54)
                     
-                    Spacer()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        playViewModel.isSelectingPlayerNumber = false
+                    }
+                }) {
+                    Image(systemName: "arrowshape.left.fill")
+                        .resizable()
+                        .frame(width: 32, height: 32)
+                        .padding(16)
+                        .foregroundColor(Color.customBlue)
+                        .background(Color.white)
+                        .cornerRadius(16)
                 }
+                .padding(.leading, 54)
                 
-                ZStack {
-                    PlayerNumberButton(playerNumber: 1)
-                    
-                    Image("selectPlayer1")
-                        .opacity(isDisabledBtn1 ? 1.0 : 0.0)
-                        .padding(.bottom, -32)
-                }
-                .opacity(opacityBtn1)
-                .offset(x: offsetXBtn1)
-                
-                ZStack {
-                    PlayerNumberButton(playerNumber: 2)
-                    
-                    Image("selectPlayer2")
-                        .opacity(isDisabledBtn2 ? 1.0 : 0.0)
-                        .padding(.bottom, -32)
-                }
-                .opacity(opacityBtn2)
-                .offset(x: offsetXBtn2)
-                
-                ZStack {
-                    PlayerNumberButton(playerNumber: 3)
-                    
-                    Image("selectPlayer3")
-                        .opacity(isDisabledBtn3 ? 1.0 : 0.0)
-                        .padding(.bottom, -32)
-                }
-                .opacity(opacityBtn3)
-                .offset(x: offsetXBtn3)
-                
-                ZStack {
-                    PlayerNumberButton(playerNumber: 4)
-                    
-                    Image("selectPlayer4")
-                        .opacity(isDisabledBtn4 ? 1.0 : 0.0)
-                        .padding(.bottom, -32)
-                }
-                .opacity(opacityBtn4)
-                .offset(x: offsetXBtn4)
+                Spacer()
             }
+            
+            ZStack {
+                PlayerNumberButton(playerNumber: 1)
+                
+                Image("selectPlayer1")
+                    .opacity(isDisabledBtn1 ? 1.0 : 0.0)
+                    .padding(.bottom, -32)
+            }
+            .opacity(opacityBtn1)
+            .offset(x: offsetXBtn1)
+            
+            ZStack {
+                PlayerNumberButton(playerNumber: 2)
+                
+                Image("selectPlayer2")
+                    .opacity(isDisabledBtn2 ? 1.0 : 0.0)
+                    .padding(.bottom, -32)
+            }
+            .opacity(opacityBtn2)
+            .offset(x: offsetXBtn2)
+            
+            ZStack {
+                PlayerNumberButton(playerNumber: 3)
+                
+                Image("selectPlayer3")
+                    .opacity(isDisabledBtn3 ? 1.0 : 0.0)
+                    .padding(.bottom, -32)
+            }
+            .opacity(opacityBtn3)
+            .offset(x: offsetXBtn3)
+            
+            ZStack {
+                PlayerNumberButton(playerNumber: 4)
+                
+                Image("selectPlayer4")
+                    .opacity(isDisabledBtn4 ? 1.0 : 0.0)
+                    .padding(.bottom, -32)
+            }
+            .opacity(opacityBtn4)
+            .offset(x: offsetXBtn4)
         }
+        .offset(x: offsetXAll)
         .onAppear() {
-            withAnimation(.easeIn(duration: 0.2)) {
-                opacityBtn1 = 1.0
-                offsetXBtn1 = 0.0
-            }
-            
-            withAnimation(.easeIn(duration: 0.2).delay(0.2)) {
-                opacityBtn2 = 1.0
-                offsetXBtn2 = 0.0
-            }
-            
-            withAnimation(.easeIn(duration: 0.2).delay(0.4)) {
-                opacityBtn3 = 1.0
-                offsetXBtn3 = 0.0
-            }
-            
-            withAnimation(.easeIn(duration: 0.2).delay(0.6)) {
-                opacityBtn4 = 1.0
-                offsetXBtn4 = 0.0
+            withAnimation(.easeIn(duration:0.2)) {
+                offsetXAll = 0.0
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                isDisabledBtn1 = false
+                withAnimation(.easeIn(duration: 0.2)) {
+                    opacityBtn1 = 1.0
+                    offsetXBtn1 = 0.0
+                }
+                
+                withAnimation(.easeIn(duration: 0.2).delay(0.2)) {
+                    opacityBtn2 = 1.0
+                    offsetXBtn2 = 0.0
+                }
+                
+                withAnimation(.easeIn(duration: 0.2).delay(0.4)) {
+                    opacityBtn3 = 1.0
+                    offsetXBtn3 = 0.0
+                }
+                
+                withAnimation(.easeIn(duration: 0.2).delay(0.6)) {
+                    opacityBtn4 = 1.0
+                    offsetXBtn4 = 0.0
+                }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    isDisabledBtn2 = false
+                    isDisabledBtn1 = false
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        isDisabledBtn3 = false
+                        isDisabledBtn2 = false
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            isDisabledBtn4 = false
+                            isDisabledBtn3 = false
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                isDisabledBtn4 = false
+                            }
                         }
                     }
                 }

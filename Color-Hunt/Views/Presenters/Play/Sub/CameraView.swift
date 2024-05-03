@@ -10,11 +10,15 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
     @Published var output = AVCapturePhotoOutput()
     @Published var preview : AVCaptureVideoPreviewLayer!
     
-    // pic data
+    // Captured Picture
     @Published var capturedImage: UIImage? = nil
     
-    // view model
+    // View Model
     var playViewModel: PlayViewModel?
+    
+    // Zoom data
+    @Published var maxZoom: CGFloat = 1.0 // Set your desired max zoom level
+    @Published var currentZoom: CGFloat = 1.0
     
     func checkAuthorization() {
         //check camera permission
@@ -60,19 +64,16 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
             }
             self.session.commitConfiguration()
         }catch{
-            print("error disini2")
+            print("Error setting up camera")
             print(error.localizedDescription)
         }
-    }
-    
-    func startCamera() {
-        self.isTaken = false
-        self.session.startRunning()
-    }
-    
-    func stopCamera() {
-        self.isTaken = true
-        self.session.stopRunning()
+        
+        // Determine the maximum zoom level
+        if let device = AVCaptureDevice.default(for: .video) {
+            maxZoom = min(device.maxAvailableVideoZoomFactor, 5.0) // Limit to a maximum of 5.0
+        } else {
+            print("Failed to get AVCaptureDevice")
+        }
     }
     
     func takePic() {
@@ -101,7 +102,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         playViewModel!.calculateImageAverageColor()
         
         // Stop the camera
-        self.stopCamera()
+        self.isTaken = true
+        self.session.stopRunning()
     }
     
     func cropImageToSquare(image: UIImage) -> UIImage? {
@@ -132,6 +134,22 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         self.isTaken = false
         self.setUp()
     }
+    
+    // Function to set zoom factor
+    func setZoom(factor: CGFloat) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+        
+        do {
+            try device.lockForConfiguration()
+            defer { device.unlockForConfiguration() }
+            
+            let zoomFactor = max(1.0, min(factor, maxZoom))
+            device.videoZoomFactor = zoomFactor
+            currentZoom = zoomFactor
+        } catch {
+            print("Failed to set zoom level: \(error.localizedDescription)")
+        }
+    }
 }
 
 // Setting preview
@@ -149,11 +167,51 @@ struct CameraPreview: UIViewRepresentable {
         
         camera.session.startRunning()
         
+        // Add pinch gesture recognizer
+        let pinchGesture = UIPinchGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handlePinchGesture(_:)))
+        view.addGestureRecognizer(pinchGesture)
+        
         return view
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {
         // No updates needed for now
     }
-}
     
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    // Coordinator to handle gesture events
+    class Coordinator: NSObject {
+        var parent: CameraPreview
+        
+        init(_ parent: CameraPreview) {
+            self.parent = parent
+        }
+        
+        @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
+            guard let device = AVCaptureDevice.default(for: .video) else { return }
+            
+            if gesture.state == .changed {
+                let maxZoom = parent.camera.maxZoom
+                let currentZoom = parent.camera.currentZoom
+                let scaleFactor: CGFloat = 0.1 // Adjust this factor to make the pinch gesture less sensitive
+                var newZoom = currentZoom * (1.0 + (gesture.scale - 1.0) * scaleFactor)
+                
+                // Ensure new zoom stays within bounds
+                newZoom = min(maxZoom, max(1.0, newZoom))
+                
+                do {
+                    try device.lockForConfiguration()
+                    defer { device.unlockForConfiguration() }
+                    
+                    device.videoZoomFactor = newZoom
+                    parent.camera.currentZoom = newZoom
+                } catch {
+                    print("Failed to set zoom level: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+}
