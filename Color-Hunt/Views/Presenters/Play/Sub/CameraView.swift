@@ -48,10 +48,9 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
     
     func setUp(){
         //set camera
-        do{
+        do {
             self.session.beginConfiguration()
-            let device = AVCaptureDevice.default(.builtInWideAngleCamera,
-                                                 for:.video, position: .back)
+            let device = AVCaptureDevice.default(for: .video)
             let input = try AVCaptureDeviceInput(device: device!)
             
             //check and add session
@@ -62,8 +61,9 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
             if self.session.canAddOutput(self.output){
                 self.session.addOutput(self.output)
             }
+            
             self.session.commitConfiguration()
-        }catch{
+        } catch {
             print("Error setting up camera")
             print(error.localizedDescription)
         }
@@ -180,7 +180,7 @@ struct CameraPreview: UIViewRepresentable {
         
         return view
     }
-
+    
     
     func updateUIView(_ uiView: UIView, context: Context) {
         // No updates needed for now
@@ -248,6 +248,6 @@ struct CameraPreview: UIViewRepresentable {
                 }
             }
         }
-
+        
     }
 }

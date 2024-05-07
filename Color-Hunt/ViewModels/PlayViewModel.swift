@@ -43,7 +43,6 @@ class PlayViewModel: ObservableObject {
             generator.impactOccurred()
         }
     }
-
     
     func timeString(_ time: Int) -> String {
         let minutes = time / 60
